@@ -7,14 +7,30 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ApproveRequestComponent } from './approve-request/approve-request.component';
+import { PageHeaderModule, SharedPipesModule, StatModule } from '../shared';
+import { HttpModule } from '@angular/http';
+
+
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+
+import { AppServiceModule } from './providers/app-services-module';
 
 @NgModule({
     imports: [
         CommonModule,
         LayoutRoutingModule,
         TranslateModule,
-        NgbDropdownModule.forRoot()
+        NgbDropdownModule.forRoot(),
+        PageHeaderModule, SharedPipesModule, StatModule,
+        TableModule,
+        ToastModule,
+        AppServiceModule,
+        HttpModule
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ApproveRequestComponent],
+    providers: [MessageService, AppServiceModule]
 })
-export class LayoutModule {}
+export class LayoutModule { }
