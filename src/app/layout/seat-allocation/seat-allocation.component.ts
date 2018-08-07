@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
 import { Subscription } from '../../../../node_modules/rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seat-allocation',
@@ -13,10 +14,13 @@ export class SeatAllocationComponent implements OnInit, OnDestroy {
   private _subscription: Subscription[] = [];
   public selectedRequest: any;
 
-  constructor(private _seatAllocationService: SeatAllocationService) { }
+  constructor(private _seatAllocationService: SeatAllocationService, private _router: Router) { }
 
   ngOnInit() {
     this.selectedRequest = JSON.parse(sessionStorage.getItem('selectedRequest'));
+    if (this.selectedRequest == null) {
+      this._router.navigate(['/approve-request']);
+    }
     this._subscription.push(this._seatAllocationService.
       fetchLayout(this.selectedRequest.buildingId, this.selectedRequest.floorId, this.selectedRequest.bayId).subscribe(res => {
         this.seats = res.results['seats'];

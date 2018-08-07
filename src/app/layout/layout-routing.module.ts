@@ -12,7 +12,7 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
+            { path: '', redirectTo: 'approve-request', pathMatch: 'prefix' },
             { path: 'approve-request', component: ApproveRequestComponent },
             { path: 'allocate-seats', component: SeatAllocationComponent },
             { path: 'import', component: SeatsImportComponent },
