@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SeatsService } from '../../app/seats.service';
+import { SeatAllocationService } from '../providers/services/seatAllocationService';
 
 @Component({
   selector: 'app-seats-import',
@@ -13,11 +13,11 @@ export class SeatsImportComponent implements OnInit {
   public seats: Array<Array<Seat>> = new Array<Array<Seat>>();
   public selectedSeats: Array<Seat> = new Array<Seat>();
   public saveSeats: Array<Seat> = new Array<Seat>();
+  public building = '';
   public floorId = '';
   public wingId = '';
-  public bayId = '';
 
-  constructor(private _seatsService: SeatsService) { }
+  constructor(private _seatsService: SeatAllocationService) { }
 
   ngOnInit() {
   }
@@ -52,7 +52,7 @@ export class SeatsImportComponent implements OnInit {
     const rowSeats: Seat[] = [];
     rowCellsList.forEach((eachCellValue, colId) => {
       const seatValues = eachCellValue.split('|');
-      const eachSeat: Seat = new Seat(seatValues[1], seatValues[2], rowId, colId);
+      const eachSeat: Seat = new Seat(seatValues[0],seatValues[1], seatValues[2], rowId, colId);
       rowSeats.push(eachSeat);
       this.saveSeats.push(eachSeat);
     });
@@ -89,7 +89,8 @@ class Seat {
   project: string;
   rowId: number;
   colId: number;
-  constructor(occupancy: string, project: string, rowId: number, colId: number) {
+  constructor(seatNbr:string,occupancy: string, project: string, rowId: number, colId: number) {
+    this.seatNbr = seatNbr;
     this.occupancy = occupancy;
     this.project = project;
     this.rowId = rowId;
