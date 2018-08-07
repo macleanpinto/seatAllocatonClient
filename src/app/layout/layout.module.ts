@@ -9,6 +9,9 @@ import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ApproveRequestComponent } from './approve-request/approve-request.component';
+
+import { SeatAllocationComponent } from './seat-allocation/seat-allocation.component';
+
 import { PageHeaderModule, SharedPipesModule, StatModule } from '../shared';
 import { HttpModule } from '@angular/http';
 import { SeatsImportComponent } from './seats-import/seats-import.component';
@@ -18,6 +21,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
 import { AppServiceModule } from './providers/app-services-module';
+import { BayLayoutComponent } from './bay-layout/bay-layout.component';
 
 @NgModule({
     imports: [
@@ -33,8 +37,8 @@ import { AppServiceModule } from './providers/app-services-module';
         FormsModule,
         ReactiveFormsModule
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ApproveRequestComponent
-        , SeatsImportComponent],
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent,
+        ApproveRequestComponent, SeatsImportComponent, SeatAllocationComponent,BayLayoutComponent],
     providers: [MessageService, AppServiceModule]
 })
 export class LayoutModule { }

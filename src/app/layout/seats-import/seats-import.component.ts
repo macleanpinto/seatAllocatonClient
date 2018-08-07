@@ -51,7 +51,8 @@ export class SeatsImportComponent implements OnInit {
     const rowSeats: Seat[] = [];
     rowCellsList.forEach((eachCellValue, colId) => {
       const seatValues = eachCellValue.split('|');
-      const eachSeat: Seat = new Seat(seatValues[0], seatValues[1], seatValues[2], rowId, colId);
+      const eachSeat: Seat = new Seat(this.building, this.floorId, this.bayId,
+        seatValues[0], seatValues[1], seatValues[2], rowId, colId);
       rowSeats.push(eachSeat);
       this.saveSeats.push(eachSeat);
     });
@@ -81,13 +82,11 @@ export class SeatsImportComponent implements OnInit {
   // }
 
 
-  uploadCsv() {
-    let bay = new Bay( this.building, this.floorId, this.bayId);
-    this._seatsService.saveTemplateService(this.saveSeats,
-      bay).subscribe(result => {
-        console.log('Done');
-      });
-  }
+   uploadCsv() {
+     this._seatsService.saveTemplateService(this.saveSeats).subscribe(result => {
+         console.log('Done');
+       });
+   }
   cancelUpload() {
     this.seats = new Array<Array<Seat>>();
     this.selectedFileName = 'No file selected';
@@ -98,27 +97,23 @@ export class SeatsImportComponent implements OnInit {
 }
 
 class Seat {
+  building: string;
+  floorId: string;
+  bayId: string;
   seatNbr: string;
   occupancy: string;
   project: string;
   rowId: number;
   colId: number;
-  constructor(seatNbr: string, occupancy: string, project: string, rowId: number, colId: number) {
+  constructor(building: string, floorId: string, bayId: string,
+    seatNbr: string, occupancy: string, project: string, rowId: number, colId: number) {
+    this.building = building;
+    this.floorId = floorId;
+    this.bayId = bayId;
     this.seatNbr = seatNbr;
     this.occupancy = occupancy;
     this.project = project;
     this.rowId = rowId;
     this.colId = colId;
-  }
-}
-
-class Bay {
-  building: string;
-  floorId: string;
-  bayId: string;
-  constructor(building: string, floorId: string, bayId: string) {
-    this.building = building;
-    this.floorId = floorId;
-    this.bayId = bayId;
   }
 }

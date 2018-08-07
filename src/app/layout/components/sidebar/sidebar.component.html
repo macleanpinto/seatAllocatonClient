@@ -1,5 +1,9 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
     <div class="list-group">
+        <a routerLink="/approve-request" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+            <span>{{ 'Approve Requests' | translate }}</span>
+        </a>
         <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Dashboard' | translate }}</span>
@@ -67,11 +71,15 @@
 
         <div class="header-fields">
             <a (click)="rltAndLtr()" class="list-group-item">
-                <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
+                <span>
+                    <i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
             </a>
             <div class="nested-menu">
                 <a class="list-group-item" (click)="addExpandClass('languages')">
-                    <span><i class="fa fa-language"></i>&nbsp; {{ 'Language' | translate }} <b class="caret"></b></span>
+                    <span>
+                        <i class="fa fa-language"></i>&nbsp; {{ 'Language' | translate }}
+                        <b class="caret"></b>
+                    </span>
                 </a>
                 <li class="nested" [class.expand]="showMenu === 'languages'">
                     <ul class="submenu">
@@ -115,28 +123,33 @@
             </div>
             <div class="nested-menu">
                 <a class="list-group-item" (click)="addExpandClass('profile')">
-                    <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
+                    <span>
+                        <i class="fa fa-user"></i>&nbsp; John Smith</span>
                 </a>
                 <li class="nested" [class.expand]="showMenu === 'profile'">
                     <ul class="submenu">
                         <li>
                             <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</span>
+                                <span>
+                                    <i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</span>
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}</span>
+                                <span>
+                                    <i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}</span>
                             </a>
                         </li>
                         <li>
                             <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}</span>
+                                <span>
+                                    <i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}</span>
                             </a>
                         </li>
                         <li>
                             <a [routerLink]="['/login']" (click)="onLoggedout()">
-                                <span><i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}</span>
+                                <span>
+                                    <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}</span>
                             </a>
                         </li>
                     </ul>
