@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
@@ -13,7 +14,7 @@ import { SeatAllocationComponent } from './seat-allocation/seat-allocation.compo
 
 import { PageHeaderModule, SharedPipesModule, StatModule } from '../shared';
 import { HttpModule } from '@angular/http';
-
+import { SeatsImportComponent } from './seats-import/seats-import.component';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -31,9 +32,12 @@ import { AppServiceModule } from './providers/app-services-module';
         TableModule,
         ToastModule,
         AppServiceModule,
-        HttpModule
+        HttpModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ApproveRequestComponent, SeatAllocationComponent],
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent,
+        ApproveRequestComponent, SeatsImportComponent, SeatAllocationComponent],
     providers: [MessageService, AppServiceModule]
 })
 export class LayoutModule { }

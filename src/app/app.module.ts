@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AuthGuard, PageHeaderModule, SharedPipesModule, StatModule } from './shared';
-import { SeatsImportComponent } from './seats-import/seats-import.component';
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
     /* for development
@@ -40,7 +39,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         SharedPipesModule,
         StatModule
     ],
-    declarations: [AppComponent, SeatsImportComponent],
+    declarations: [AppComponent],
     providers: [AuthGuard],
     bootstrap: [AppComponent]
 })

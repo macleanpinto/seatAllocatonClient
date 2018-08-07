@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="col-lg-12 col-sm-11 col-11">
+    <div class="form-group">
+      <label for="floor">Floor id:</label>
+      <input type="text" class="form-control" id="floor" [(ngModel)]="floorId">
+    </div>
+    <div class="form-group">
+      <label for="wing">Wing id:</label>
+      <input type="password" class="form-control" id="wing">
+    </div>
+    <div class="form-group">
+      <label for="bay">Bay id:</label>
+      <input type="text" class="form-control" id="bay">
+    </div>
+  </div>
+  <div class="input-group mb-3">
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="inputGroupFile" (change)="fileChange($event)">
+      <label class="custom-file-label" for="inputGroupFile" accept=".csv">{{selectedFileName}}</label>
+    </div>
+    <div class="input-group-append">
+      <span class="input-group-text" id="">Upload</span>
+    </div>
+  </div>
+  
+  <table>
+    <tbody>
+      <tr *ngFor="let rowOfSeats of seats">
+        <td *ngFor="let seat of rowOfSeats; let i = index">
+          <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'S'" type="button" class="btn btn-outline-danger" title="{{seat.project}}">{{seat.seatNbr}}</button>
+          <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'NS'" type="button" [ngClass]="seat.currentlySelected ? 'btn btn-info' : 'btn btn-outline-success'">{{seat.seatNbr}}</button>
+          <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'D'" type="button" class="btn btn-outline-secondary"
+            disabled>{{seat.seatNbr}}</button>
+          <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'M'" type="button" class="btn btn-outline-dark"
+            disabled title="Meeting Room: {{seat.seatNbr}}">&nbsp;</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="selectedSeats && selectedSeats.length > 0" class="alert alert-info" role="alert">
+    {{selectedSeats.length}} seats selected
+  </div>
+</div>

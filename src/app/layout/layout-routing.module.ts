@@ -5,6 +5,7 @@ import { ApproveRequestComponent } from './approve-request/approve-request.compo
 import { SeatAllocationComponent } from './seat-allocation/seat-allocation.component';
 
 
+import { SeatsImportComponent } from './seats-import/seats-import.component';
 const routes: Routes = [
     {
         path: '',
@@ -13,6 +14,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'approve-request', component: ApproveRequestComponent },
             { path: 'allocate-seats', component: SeatAllocationComponent },
+            { path: 'import', component: SeatsImportComponent },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
