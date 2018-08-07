@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { ApproveRequestComponent } from './approve-request/approve-request.component';
+import { SeatAllocationComponent } from './seat-allocation/seat-allocation.component';
+
 
 const routes: Routes = [
     {
@@ -10,6 +12,7 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'approve-request', component: ApproveRequestComponent },
+            { path: 'allocate-seats', component: SeatAllocationComponent },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },

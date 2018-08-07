@@ -3,9 +3,9 @@
     "statusCd": 200,
     "results": [{
             "requestId": 1,
-            "bayName": "Block A",
+            "buildingId": "BNG C1",
             "floorId": 45765341,
-            "wingId": 974337291,
+            "bayId": "A",
             "seatCount": 20,
             "projectName": "Gordon Food Services",
             "requestInitiator": "Upendra Singh",
@@ -13,9 +13,9 @@
         },
         {
             "requestId": 2,
-            "bayName": "Block E",
+            "buildingId": "BNG C1",
             "floorId": 45765341,
-            "wingId": 974337291,
+            "bayId": "A",
             "seatCount": 20,
             "projectName": "Gordon Food Services",
             "requestInitiator": "Upendra Singh",
@@ -23,9 +23,9 @@
         },
         {
             "requestId": 3,
-            "bayName": "Block B",
+            "buildingId": "BNG C1",
             "floorId": 45765341,
-            "wingId": 974337291,
+            "bayId": "A",
             "seatCount": 20,
             "projectName": "Gordon Food Services",
             "requestInitiator": "Upendra Singh",
@@ -33,23 +33,14 @@
         },
         {
             "requestId": 4,
-            "bayName": "Block C",
+            "buildingId": "BNG C1",
             "floorId": 45765341,
-            "wingId": 974337291,
-            "seatCount": 20,
-            "projectName": "Gordon Food Services",
-            "requestInitiator": "Upendra Singh",
-            "status": "In Review"
-        },
-        {
-            "requestId": 5,
-            "bayName": "Block D",
-            "floorId": 45765341,
-            "wingId": 974337291,
+            "bayId": "A",
             "seatCount": 20,
             "projectName": "Gordon Food Services",
             "requestInitiator": "Upendra Singh",
             "status": "In Review"
         }
+
     ]
 }

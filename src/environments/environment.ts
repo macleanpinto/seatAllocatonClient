@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  fetchRequests: 'resources/fetchRequest.json'
+  fetchRequests: 'resources/fetchRequest.json',
+  fetchLayout: 'resources/fetchLayout.json'
 };

@@ -8,6 +8,9 @@ import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ApproveRequestComponent } from './approve-request/approve-request.component';
+
+import { SeatAllocationComponent } from './seat-allocation/seat-allocation.component';
+
 import { PageHeaderModule, SharedPipesModule, StatModule } from '../shared';
 import { HttpModule } from '@angular/http';
 
@@ -30,7 +33,7 @@ import { AppServiceModule } from './providers/app-services-module';
         AppServiceModule,
         HttpModule
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ApproveRequestComponent],
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ApproveRequestComponent, SeatAllocationComponent],
     providers: [MessageService, AppServiceModule]
 })
 export class LayoutModule { }

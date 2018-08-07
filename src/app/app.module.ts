@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 
 import { AuthGuard, PageHeaderModule, SharedPipesModule, StatModule } from './shared';
 import { SeatsImportComponent } from './seats-import/seats-import.component';
-
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
     /* for development

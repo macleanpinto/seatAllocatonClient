@@ -8,11 +8,21 @@ import { environment } from '../../../../environments/environment';
 export class SeatAllocationService {
 
     private _fetchRequests = environment.fetchRequests;
+    private _fetchLayout = environment.fetchLayout;
 
     constructor(private _http: Http) { }
 
     public fetchRequests(): Observable<any> {
         return this._http.get(this._fetchRequests)
+            .pipe(
+                map((response: Response) => <any>response.json()),
+                tap(response => console.log('end progress bar here')),
+                catchError(this.handleError)
+            );
+    }
+
+    public fetchLayout(): Observable<any> {
+        return this._http.get(this._fetchLayout)
             .pipe(
                 map((response: Response) => <any>response.json()),
                 tap(response => console.log('end progress bar here')),
