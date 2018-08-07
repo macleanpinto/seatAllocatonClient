@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { ApproveRequestComponent } from './approve-request/approve-request.component';
+import { SeatAllocationComponent } from './seat-allocation/seat-allocation.component';
+
+
 import { SeatsImportComponent } from './seats-import/seats-import.component';
 import { BayLayoutComponent } from './bay-layout/bay-layout.component';
 const routes: Routes = [
@@ -11,6 +14,7 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'approve-request', component: ApproveRequestComponent },
+            { path: 'allocate-seats', component: SeatAllocationComponent },
             { path: 'import', component: SeatsImportComponent },
             { path: 'bayLayout', component: BayLayoutComponent },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },

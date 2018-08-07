@@ -21,9 +21,10 @@ export class ApproveRequestComponent implements OnInit {
       this.requests = res.results;
     });
     this.cols = [
-      { field: 'bayName', header: 'Bay Name' },
+      { field: 'requestId', header: 'Request Id' },
+      { field: 'buildingId', header: 'Building Id' },
       { field: 'floorId', header: 'Floor Id' },
-      { field: 'wingId', header: 'Wing Id' },
+      { field: 'bayId', header: 'Bay Id' },
       { field: 'seatCount', header: 'No of Seats Requested' },
       { field: 'projectName', header: 'Project Name' },
       { field: 'requestInitiator', header: 'Request Initiator' },

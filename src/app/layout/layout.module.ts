@@ -9,6 +9,9 @@ import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ApproveRequestComponent } from './approve-request/approve-request.component';
+
+import { SeatAllocationComponent } from './seat-allocation/seat-allocation.component';
+
 import { PageHeaderModule, SharedPipesModule, StatModule } from '../shared';
 import { HttpModule } from '@angular/http';
 import { SeatsImportComponent } from './seats-import/seats-import.component';
@@ -34,8 +37,8 @@ import { BayLayoutComponent } from './bay-layout/bay-layout.component';
         FormsModule,
         ReactiveFormsModule
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ApproveRequestComponent
-        , SeatsImportComponent, BayLayoutComponent],
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent,
+        ApproveRequestComponent, SeatsImportComponent, SeatAllocationComponent,BayLayoutComponent],
     providers: [MessageService, AppServiceModule]
 })
 export class LayoutModule { }
