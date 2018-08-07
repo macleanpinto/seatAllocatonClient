@@ -42,8 +42,7 @@ export class SeatsImportComponent implements OnInit {
           }
         }
         console.log(this.seats);
-        this._seatsService.saveTemplateService(this.saveSeats,
-          this.building, this.floorId, this.bayId).subscribe(result => console.log('Done'));
+
       };
     }
   }
@@ -81,6 +80,21 @@ export class SeatsImportComponent implements OnInit {
   //     });
   // }
 
+
+  uploadCsv() {
+    let bay = new Bay( this.building, this.floorId, this.bayId);
+    this._seatsService.saveTemplateService(this.saveSeats,
+      bay).subscribe(result => {
+        console.log('Done');
+      });
+  }
+  cancelUpload() {
+    this.seats = new Array<Array<Seat>>();
+    this.selectedFileName = 'No file selected';
+    this.selectedfile = null;
+  }
+
+
 }
 
 class Seat {
@@ -95,5 +109,16 @@ class Seat {
     this.project = project;
     this.rowId = rowId;
     this.colId = colId;
+  }
+}
+
+class Bay {
+  building: string;
+  floorId: string;
+  bayId: string;
+  constructor(building: string, floorId: string, bayId: string) {
+    this.building = building;
+    this.floorId = floorId;
+    this.bayId = bayId;
   }
 }

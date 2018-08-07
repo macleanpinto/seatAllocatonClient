@@ -22,14 +22,12 @@ export class SeatAllocationService {
             );
     }
 
-    public saveTemplateService(seats, floorId: string, wingId: string, bayId: string) {
+    public saveTemplateService(seats, bay) {
         if (!environment.production) {
             let httpParams = new HttpParams();
-            httpParams = httpParams.append('floorId', floorId).append('wingId', wingId).append('bayName', bayId);
+            httpParams = httpParams.append('bayDTO', bay);
             console.log(httpParams);
-            return this._httpClient.post(this._saveSeatsTemplate, seats, {
-                params: httpParams
-          });
+            return this._httpClient.post(this._saveSeatsTemplate, seats, bay);
       } else {
           return this._httpClient.post(this._saveSeatsTemplate, seats);
       }
