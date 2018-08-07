@@ -9,7 +9,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
-import { SeatsImportComponent } from './seats-import/seats-import.component';
+import { SeatsService } from '../app/seats.service';
 
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
@@ -37,8 +37,9 @@ export const createTranslateLoader = (http: HttpClient) => {
         }),
         AppRoutingModule
     ],
-    declarations: [AppComponent, SeatsImportComponent],
-    providers: [AuthGuard],
+    declarations: [AppComponent],
+    providers: [AuthGuard,
+        SeatsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
