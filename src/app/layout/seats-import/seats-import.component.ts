@@ -15,7 +15,7 @@ export class SeatsImportComponent implements OnInit {
   public saveSeats: Array<Seat> = new Array<Seat>();
   public building = '';
   public floorId = '';
-  public wingId = '';
+  public bayId = '';
 
   constructor(private _seatsService: SeatAllocationService) { }
 
@@ -43,7 +43,7 @@ export class SeatsImportComponent implements OnInit {
         }
         console.log(this.seats);
         this._seatsService.saveTemplateService(this.saveSeats,
-          this.floorId, this.wingId, this.bayId).subscribe(result => console.log('Done'));
+          this.building, this.floorId, this.bayId).subscribe(result => console.log('Done'));
       };
     }
   }
@@ -52,7 +52,7 @@ export class SeatsImportComponent implements OnInit {
     const rowSeats: Seat[] = [];
     rowCellsList.forEach((eachCellValue, colId) => {
       const seatValues = eachCellValue.split('|');
-      const eachSeat: Seat = new Seat(seatValues[0],seatValues[1], seatValues[2], rowId, colId);
+      const eachSeat: Seat = new Seat(seatValues[0], seatValues[1], seatValues[2], rowId, colId);
       rowSeats.push(eachSeat);
       this.saveSeats.push(eachSeat);
     });
@@ -77,7 +77,7 @@ export class SeatsImportComponent implements OnInit {
   //     (result) => {
   //       this.seats = result[0].listOfSeatsList;
   //       console.log('Done');
-      
+
   //     });
   // }
 
@@ -89,7 +89,7 @@ class Seat {
   project: string;
   rowId: number;
   colId: number;
-  constructor(seatNbr:string,occupancy: string, project: string, rowId: number, colId: number) {
+  constructor(seatNbr: string, occupancy: string, project: string, rowId: number, colId: number) {
     this.seatNbr = seatNbr;
     this.occupancy = occupancy;
     this.project = project;
