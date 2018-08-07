@@ -23,8 +23,12 @@ export class SeatAllocationService {
             );
     }
 
-    public fetchLayout(): Observable<any> {
-        return this._http.get(this._fetchLayout)
+    public fetchLayout(buildingId: string, floorId: string, bayId: string): Observable<any> {
+        const params = new URLSearchParams();
+        params.set('buildingId', buildingId);
+        params.set('floorId', floorId);
+        params.set('bayId', bayId);
+        return this._http.get(this._fetchLayout, { search: params })
             .pipe(
                 map((response: Response) => <any>response.json()),
                 tap(response => console.log('end progress bar here')),
@@ -39,11 +43,11 @@ export class SeatAllocationService {
             console.log(httpParams);
             return this._httpClient.post(this._saveSeatsTemplate, seats, {
                 params: httpParams
-          });
-      } else {
-          return this._httpClient.post(this._saveSeatsTemplate, seats);
-      }
-  }
+            });
+        } else {
+            return this._httpClient.post(this._saveSeatsTemplate, seats);
+        }
+    }
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console

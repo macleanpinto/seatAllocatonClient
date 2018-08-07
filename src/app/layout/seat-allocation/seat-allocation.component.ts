@@ -1,57 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
+import { Subscription } from '../../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-seat-allocation',
   templateUrl: './seat-allocation.component.html',
   styleUrls: ['./seat-allocation.component.scss']
 })
-export class SeatAllocationComponent implements OnInit {
-
-  public selectedFileName = 'No file selected';
-  public selectedfile: File;
+export class SeatAllocationComponent implements OnInit, OnDestroy {
   public seats: Array<Array<Seat>> = new Array<Array<Seat>>();
   public selectedSeats: Array<Seat> = new Array<Seat>();
+  private _subscription: Subscription[] = [];
+  public selectedRequest: any;
 
   constructor(private _seatAllocationService: SeatAllocationService) { }
 
   ngOnInit() {
-    this._seatAllocationService.fetchLayout().subscribe(res => {
-      this.seats = res.results['seats'];
-    });
+    this.selectedRequest = JSON.parse(sessionStorage.getItem('selectedRequest'));
+    this._subscription.push(this._seatAllocationService.
+      fetchLayout(this.selectedRequest.buildingId, this.selectedRequest.floorId, this.selectedRequest.bayId).subscribe(res => {
+        this.seats = res.results['seats'];
+      }));
   }
-
-  fileChange(event) {
-    const fileList: FileList = event.target.files;
-    if (fileList.length > 0) {
-      this.selectedFileName = fileList[0].name;
-      this.selectedfile = fileList[0];
-      console.log(this.selectedfile.type);
-      const reader = new FileReader();
-      reader.readAsText(this.selectedfile, 'UTF-8');
-      reader.onload = (fileLoadEvent) => {
-        const excelContentAsString = reader.result;
-        const allRows = excelContentAsString.split('\n');
-
-        for (let i = 0; i < allRows.length; i++) {
-          if (allRows[i] || allRows[i].trim() !== '') {
-            const cellValues = allRows[i].split(',');
-            const rowSeats: Seat[] = this.fecthRowSeats(cellValues);
-            this.seats.push(rowSeats);
-          }
-        }
-      };
-    }
-  }
-
-  public fecthRowSeats(rowCellsList: Array<string>) {
-    const rowSeats: Seat[] = [];
-    rowCellsList.forEach(eachCellValue => {
-      const seatValues = eachCellValue.split('|');
-      const eachSeat: Seat = new Seat(seatValues[0], seatValues[1], seatValues[2]);
-      rowSeats.push(eachSeat);
-    });
-    return rowSeats;
+  ngOnDestroy() {
+    this._subscription.forEach(sub => sub.unsubscribe());
   }
 
   public selectDeselectAvailableSeats(selectedSeat: Seat) {
@@ -82,4 +54,32 @@ class Seat {
   }
 }
 
+class AllocationRequest {
+  requestId: string;
+  buildingId: string;
+  floorId: string;
+  bayId: string;
+  seatCount: number;
+  projectName: boolean;
+  requestInitiator: string;
+  status: string;
+
+  constructor(requestId: string,
+    buildingId: string,
+    floorId: string,
+    bayId: string,
+    seatCount: number,
+    projectName: boolean,
+    requestInitiator: string,
+    status: string) {
+    this.requestId = requestId;
+    this.buildingId = buildingId;
+    this.floorId = floorId;
+    this.bayId = bayId;
+    this.seatCount = seatCount;
+    this.projectName = projectName;
+    this.requestInitiator = requestInitiator;
+    this.status = status;
+  }
+}
 

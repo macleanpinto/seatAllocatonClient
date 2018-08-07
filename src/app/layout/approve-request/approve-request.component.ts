@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
+import { Router } from '@angular/router';
+import { Subscription } from '../../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-approve-request',
@@ -8,18 +10,18 @@ import { SeatAllocationService } from '../providers/services/seatAllocationServi
   styleUrls: ['./approve-request.component.scss'],
   animations: [routerTransition()]
 })
-export class ApproveRequestComponent implements OnInit {
+export class ApproveRequestComponent implements OnInit, OnDestroy {
 
   requests: any[];
   cols: any[];
-  selectedRequest: any;
+  private _subscription: Subscription[] = [];
 
-  constructor(private _seatAllocationService: SeatAllocationService) { }
+  constructor(private _seatAllocationService: SeatAllocationService, private _router: Router) { }
 
   ngOnInit() {
-    this._seatAllocationService.fetchRequests().subscribe(res => {
+    this._subscription.push(this._seatAllocationService.fetchRequests().subscribe(res => {
       this.requests = res.results;
-    });
+    }));
     this.cols = [
       { field: 'requestId', header: 'Request Id' },
       { field: 'buildingId', header: 'Building Id' },
@@ -31,13 +33,13 @@ export class ApproveRequestComponent implements OnInit {
       { field: 'status', header: 'Status' }
     ];
   }
-
-  onRowSelect(event) {
-    this.selectedRequest = event.data;
-    // this.messageService.add({ severity: 'info', summary: 'Car Selected', detail: 'Vin: ' + event.data.projectName });
+  ngOnDestroy() {
+    this._subscription.forEach(sub => sub.unsubscribe());
   }
 
-  onRowUnselect(event) {
-    //   this.messageService.add({ severity: 'info', summary: 'Car Unselected', detail: 'Vin: ' + event.data.vin });
+  onRowSelect(event) {
+    console.log(event.data);
+    sessionStorage.setItem('selectedRequest', JSON.stringify(event.data));
+    this._router.navigate(['/allocate-seats']);
   }
 }
