@@ -15,7 +15,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'approve-request', pathMatch: 'prefix' },
             { path: 'approve-request', component: ApproveRequestComponent },
             { path: 'allocate-seats', component: SeatAllocationComponent },
-            { path: 'import', component: SeatsImportComponent },
+            { path: 'import-seats-layout', component: SeatsImportComponent },
             { path: 'bayLayout', component: BayLayoutComponent },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
