@@ -99,17 +99,17 @@ export class SeatsImportComponent implements OnInit {
 
 class Seat {
   building: string;
-  floorId: string;
+  floor: string;
   bayId: string;
   seatNbr: string;
   occupancy: string;
   project: string;
   rowId: number;
   colId: number;
-  constructor(building: string, floorId: string, bayId: string,
+  constructor(building: string, floor: string, bayId: string,
     seatNbr: string, occupancy: string, project: string, rowId: number, colId: number) {
     this.building = building;
-    this.floorId = floorId;
+    this.floor = floor;
     this.bayId = bayId;
     this.seatNbr = seatNbr;
     this.occupancy = occupancy;
