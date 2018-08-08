@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
 
 @Component({
@@ -16,7 +16,7 @@ export class SeatsImportComponent implements OnInit {
   public building = '';
   public floorId = '';
   public bayId = '';
-
+  @ViewChild('inputFile') fileInput: ElementRef;
   constructor(private _seatsService: SeatAllocationService) { }
 
   ngOnInit() {
@@ -42,8 +42,7 @@ export class SeatsImportComponent implements OnInit {
           }
         }
         console.log(this.seats);
-        this._seatsService.saveTemplateService(this.saveSeats,
-          this.building, this.floorId, this.bayId).subscribe(result => console.log('Done'));
+
       };
     }
   }
@@ -52,7 +51,8 @@ export class SeatsImportComponent implements OnInit {
     const rowSeats: Seat[] = [];
     rowCellsList.forEach((eachCellValue, colId) => {
       const seatValues = eachCellValue.split('|');
-      const eachSeat: Seat = new Seat(seatValues[0], seatValues[1], seatValues[2], rowId, colId);
+      const eachSeat: Seat = new Seat(this.building, this.floorId, this.bayId,
+        seatValues[0], seatValues[1], seatValues[2], rowId, colId);
       rowSeats.push(eachSeat);
       this.saveSeats.push(eachSeat);
     });
@@ -81,15 +81,36 @@ export class SeatsImportComponent implements OnInit {
   //     });
   // }
 
+
+   uploadCsv() {
+     this._seatsService.saveTemplateService(this.saveSeats).subscribe(result => {
+         console.log('Done');
+       });
+   }
+  cancelUpload() {
+    this.seats = new Array<Array<Seat>>();
+    this.selectedFileName = 'No file selected';
+    this.fileInput.nativeElement.value = '';
+    //this.selectedfile = null;
+  }
+
+
 }
 
 class Seat {
+  building: string;
+  floor: string;
+  bayId: string;
   seatNbr: string;
   occupancy: string;
   project: string;
   rowId: number;
   colId: number;
-  constructor(seatNbr: string, occupancy: string, project: string, rowId: number, colId: number) {
+  constructor(building: string, floor: string, bayId: string,
+    seatNbr: string, occupancy: string, project: string, rowId: number, colId: number) {
+    this.building = building;
+    this.floor = floor;
+    this.bayId = bayId;
     this.seatNbr = seatNbr;
     this.occupancy = occupancy;
     this.project = project;

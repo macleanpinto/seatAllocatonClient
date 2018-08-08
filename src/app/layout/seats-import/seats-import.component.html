@@ -1,29 +1,27 @@
 <div class="container">
   <div class="col-lg-12 col-sm-11 col-11">
-    <div class="form-group">
-      <label for="floor">Floor id:</label>
-      <input type="text" class="form-control" id="floor" [(ngModel)]="floorId">
+    <div class="form-group col-lg-4 col-sm-4 col-4">
+      <label for="building">Building:</label>
+      <input type="text" class="form-control" id="building" [(ngModel)]="building">
     </div>
-    <div class="form-group">
-      <label for="wing">Wing id:</label>
-      <input type="password" class="form-control" id="wing">
+    <div class="form-group col-lg-4 col-sm-4 col-4">
+      <label for="floor">Floor Id:</label>
+      <input type="text" class="form-control" id="floor"  [(ngModel)]="floorId">
     </div>
-    <div class="form-group">
+    <div class="form-group  col-lg-4 col-sm-4 col-4">
       <label for="bay">Bay id:</label>
-      <input type="text" class="form-control" id="bay">
+      <input type="text" class="form-control" id="bay"  [(ngModel)]="bayId">
     </div>
+    <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input file" id="inputGroupFile" (change)="fileChange($event)" #inputFile>
+          <label class="custom-file-label" for="inputGroupFile" accept=".csv">{{selectedFileName}}</label>
+        </div>
+      </div>
   </div>
-  <div class="input-group mb-3">
-    <div class="custom-file">
-      <input type="file" class="custom-file-input" id="inputGroupFile" (change)="fileChange($event)">
-      <label class="custom-file-label" for="inputGroupFile" accept=".csv">{{selectedFileName}}</label>
-    </div>
-    <div class="input-group-append">
-      <span class="input-group-text" id="">Upload</span>
-    </div>
-  </div>
+
   
-  <table>
+  <table class="scrollable-table">
     <tbody>
       <tr *ngFor="let rowOfSeats of seats">
         <td *ngFor="let seat of rowOfSeats; let i = index">
@@ -37,7 +35,15 @@
       </tr>
     </tbody>
   </table>
-  <div *ngIf="selectedSeats && selectedSeats.length > 0" class="alert alert-info" role="alert">
-    {{selectedSeats.length}} seats selected
+<div class = "row seat-button" *ngIf="seats.length != 0">
+    <div class="col-lg-4 col-sm-2 col-2">
+      </div>
+  <div class="col-lg-4 col-sm-4 col-4">
+    <button type="button" class="btn btn-success" (click)="uploadCsv()">Upload</button>
   </div>
+  <div class="col-lg-4 col-sm-4 col-4">
+    <button type="button" class="btn btn-danger" (click)="cancelUpload()">Cancel</button>
+ </div>
+
+</div>
 </div>

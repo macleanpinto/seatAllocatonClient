@@ -36,18 +36,10 @@ export class SeatAllocationService {
             );
     }
 
-    public saveTemplateService(seats, floorId: string, wingId: string, bayId: string) {
-        if (!environment.production) {
-            let httpParams = new HttpParams();
-            httpParams = httpParams.append('floorId', floorId).append('wingId', wingId).append('bayName', bayId);
-            console.log(httpParams);
-            return this._httpClient.post(this._saveSeatsTemplate, seats, {
-                params: httpParams
-            });
-        } else {
-            return this._httpClient.post(this._saveSeatsTemplate, seats);
-        }
+    public saveTemplateService(seats) {
+        return this._httpClient.post(this._saveSeatsTemplate, seats);
     }
+
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
