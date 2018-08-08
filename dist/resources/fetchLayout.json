@@ -1,0 +1,675 @@
+{
+    "msg": "Results Found",
+    "statusCd": 200,
+    "results": {
+        "buildingId": "BNG C1",
+        "floorId": "5",
+        "bayId": "A",
+        "seats": [
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F2",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F3",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F4",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F5",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F6",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F7",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F8",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F9",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F10",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "\r"
+                }
+            ],
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM2"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM3"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM4"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "NS",
+                    "project": "TEAM5"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM6"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM8"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM9"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM10"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "\r"
+                }
+            ],
+            [{
+                    "seatNbr": "BN5F21",
+                    "occupancy": "NS",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "BN5F22",
+                    "occupancy": "NS",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "BN5F23",
+                    "occupancy": "NS",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "BN5F24",
+                    "occupancy": "NS",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "BN5F25",
+                    "occupancy": "D",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "BN5F26",
+                    "occupancy": "NS",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "BN5F27",
+                    "occupancy": "NS",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "BN5F28",
+                    "occupancy": "NS",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "BN5F29",
+                    "occupancy": "NS",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "BN5F30",
+                    "occupancy": "NS",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "BN5F31",
+                    "occupancy": "NS",
+                    "project": "Project3"
+                },
+                {
+                    "seatNbr": "\r"
+                }
+            ],
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F2",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F3",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F4",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F5",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F6",
+                    "occupancy": "S",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "BN5F7",
+                    "occupancy": "D",
+                    "project": "Project1"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "\r"
+                }
+            ],
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM2"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM3"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM4"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "NS",
+                    "project": "TEAM5"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM6"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7\r"
+                }
+            ],
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7\r"
+                }
+            ],
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7\r"
+                }
+            ],
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "NS",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "NS",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "NS",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "NS",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "NS",
+                    "project": "TEAM7\r"
+                }
+            ],
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "NS",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "NS",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "NS",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7\r"
+                }
+            ],
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7\r"
+                }
+            ],
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7\r"
+                }
+            ],
+            [{
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": "Jim Corbett",
+                    "occupancy": "M",
+                    "project": "Project"
+                },
+                {
+                    "seatNbr": ""
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7"
+                },
+                {
+                    "seatNbr": "BN5F11",
+                    "occupancy": "S",
+                    "project": "TEAM7\r"
+                }
+            ]
+        ]
+    }
+}

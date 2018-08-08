@@ -40,7 +40,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         SharedPipesModule,
         StatModule
     ],
-    declarations: [AppComponent, ImportSeatsComponent],
+    declarations: [AppComponent],
     providers: [AuthGuard],
     bootstrap: [AppComponent]
 })
