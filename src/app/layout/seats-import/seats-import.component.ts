@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
 
 @Component({
@@ -16,7 +16,7 @@ export class SeatsImportComponent implements OnInit {
   public building = '';
   public floorId = '';
   public bayId = '';
-
+  @ViewChild('inputFile') fileInput: ElementRef;
   constructor(private _seatsService: SeatAllocationService) { }
 
   ngOnInit() {
@@ -90,7 +90,8 @@ export class SeatsImportComponent implements OnInit {
   cancelUpload() {
     this.seats = new Array<Array<Seat>>();
     this.selectedFileName = 'No file selected';
-    this.selectedfile = null;
+    this.fileInput.nativeElement.value = '';
+    //this.selectedfile = null;
   }
 
 

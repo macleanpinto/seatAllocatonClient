@@ -14,7 +14,7 @@
     </div>
     <div class="input-group mb-3">
         <div class="custom-file">
-          <input type="file" class="custom-file-input file" id="inputGroupFile" (change)="fileChange($event)">
+          <input type="file" class="custom-file-input file" id="inputGroupFile" (change)="fileChange($event)" #inputFile>
           <label class="custom-file-label" for="inputGroupFile" accept=".csv">{{selectedFileName}}</label>
         </div>
       </div>
