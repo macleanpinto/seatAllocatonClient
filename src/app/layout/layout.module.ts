@@ -38,7 +38,7 @@ import { BayLayoutComponent } from './bay-layout/bay-layout.component';
         ReactiveFormsModule
     ],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent,
-        ApproveRequestComponent, SeatsImportComponent, SeatAllocationComponent,BayLayoutComponent],
+        ApproveRequestComponent, SeatsImportComponent, SeatAllocationComponent, BayLayoutComponent],
     providers: [MessageService, AppServiceModule]
 })
 export class LayoutModule { }
