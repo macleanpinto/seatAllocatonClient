@@ -21,7 +21,8 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
 import { AppServiceModule } from './providers/app-services-module';
-import { BayLayoutComponent } from './bay-layout/bay-layout.component';
+import { BaySearchComponent } from './bay-search/bay-search.component';
+import { BayLayoutComponent } from './bay-search/bay-layout/bay-layout.component';
 
 @NgModule({
     imports: [
@@ -38,7 +39,7 @@ import { BayLayoutComponent } from './bay-layout/bay-layout.component';
         ReactiveFormsModule
     ],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent,
-        ApproveRequestComponent, SeatsImportComponent, SeatAllocationComponent,BayLayoutComponent],
+        ApproveRequestComponent, SeatsImportComponent, SeatAllocationComponent,BaySearchComponent, BayLayoutComponent],
     providers: [MessageService, AppServiceModule]
 })
 export class LayoutModule { }

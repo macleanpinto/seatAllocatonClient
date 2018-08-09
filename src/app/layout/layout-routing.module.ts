@@ -6,7 +6,7 @@ import { SeatAllocationComponent } from './seat-allocation/seat-allocation.compo
 
 
 import { SeatsImportComponent } from './seats-import/seats-import.component';
-import { BayLayoutComponent } from './bay-layout/bay-layout.component';
+import { BaySearchComponent } from './bay-search/bay-search.component';
 const routes: Routes = [
     {
         path: '',
@@ -16,7 +16,7 @@ const routes: Routes = [
             { path: 'approve-request', component: ApproveRequestComponent },
             { path: 'allocate-seats', component: SeatAllocationComponent },
             { path: 'import', component: SeatsImportComponent },
-            { path: 'bayLayout', component: BayLayoutComponent },
+            { path: 'baySearch', component: BaySearchComponent },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
