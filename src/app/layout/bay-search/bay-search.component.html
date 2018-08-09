@@ -15,6 +15,7 @@
             </div>
         </div>
         <button class="btn btn-primary size" [disabled]="!baySearchForm.valid" (click)="onSearch(baySearchForm)">Search</button>
+        <button class="btn btn-primary size" (click)="clearForm()">Reset</button>
     </form>
-    <app-bay-layout [seats]="seats"></app-bay-layout>   
+    <app-bay-layout [seats]="seats"></app-bay-layout> 
 </div>

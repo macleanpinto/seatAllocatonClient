@@ -39,7 +39,13 @@ export class BaySearchComponent implements OnInit {
         this.showLayout = true;
         this.seats = res.results['seats'];
       }));
+  }
 
+  private clearForm() {
+    this.baySearchForm.controls['building'].setValue('');
+    this.baySearchForm.controls['floor'].setValue('');
+    this.baySearchForm.controls['bay'].setValue('');
+    this.seats = [];
   }
 }
 
