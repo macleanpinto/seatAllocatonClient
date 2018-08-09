@@ -3,19 +3,56 @@
         <tbody>
             <tr *ngFor="let rowOfSeats of seats">
                 <td *ngFor="let seat of rowOfSeats; let i = index">
-                    <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'S'" type="button" class="btn btn-outline-danger"
+                    <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'S'" type="button" class="btn btn-outline-danger seat"
                         title="{{seat.project}}">{{seat.seatNbr}}</button>
-                    <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'NS'" type="button" [ngClass]="seat.currentlySelected ? 'btn btn-info' : 'btn btn-outline-success'"
+                    <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'NS'" type="button" class="seat" [ngClass]="seat.currentlySelected ? 'btn btn-info' : 'btn btn-outline-success'"
                         (click)="selectDeselectAvailableSeats(seat)">{{seat.seatNbr}}</button>
-                    <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'D'" type="button" class="btn btn-outline-secondary"
+                    <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'D'" type="button" class="btn btn-outline-secondary seat"
                         disabled>{{seat.seatNbr}}</button>
-                    <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'M'" type="button" class="btn btn-outline-dark"
+                    <button *ngIf="seat.seatNbr && seat.seatNbr.trim() !== '' && seat.occupancy == 'M'" type="button" class="btn btn-outline-dark seat"
                         disabled title="Meeting Room: {{seat.seatNbr}}">&nbsp;</button>
                 </td>
             </tr>
         </tbody>
     </table>
+
     <div *ngIf="selectedSeats && selectedSeats.length > 0" class="alert alert-info" role="alert">
         {{selectedSeats.length}} seats selected
     </div>
+    <div *ngIf="_selectionExceededRequested">
+        <p-toast position="bottom-right" (onClose)="onClose()" [modal]="true">
+            <div class="toaster">
+                <ng-template let-message pTemplate="message">
+                    <div>
+                        <h3>{{message.summary}}</h3>
+                        <p>{{message.detail}}</p>
+                    </div>
+                </ng-template>
+            </div>
+        </p-toast>
+    </div>
+
+    <div class="row mt-5">
+        <div class="offset-sm-3 col-sm-6 offset-md-3 col-md-6  offset-lg-3 col-lg-6">
+            <button type="button" class="btn btn-outline-secondary btn-md button-class" (click)="onReject(content)">Reject</button>
+            <button type="button" class="btn btn-primary btn-md button-class float-right" (click)="onSubmit()">Submit</button>
+        </div>
+    </div>
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title">Reject Comments</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <textarea class ="modal-textarea-width"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+            <button type="button" class="btn btn-Primary" (click)="onSubmit($event)">Submit</button>
+        </div>
+    </ng-template>
+
 </div>

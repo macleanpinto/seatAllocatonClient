@@ -2,6 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
 import { Subscription } from '../../../../node_modules/rxjs';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-seat-allocation',
@@ -13,11 +16,15 @@ export class SeatAllocationComponent implements OnInit, OnDestroy {
   public selectedSeats: Array<Seat> = new Array<Seat>();
   private _subscription: Subscription[] = [];
   public selectedRequest: any;
+  private _selectionExceededRequested = false;
+  private closeResult: string;
 
-  constructor(private _seatAllocationService: SeatAllocationService, private _router: Router) { }
+  constructor(private _seatAllocationService: SeatAllocationService, private _router: Router, private _messageService: MessageService,
+    private _modalService: NgbModal) { }
 
   ngOnInit() {
     this.selectedRequest = JSON.parse(sessionStorage.getItem('selectedRequest'));
+    console.log('Test', this.selectedRequest.seatCount);
     if (this.selectedRequest == null) {
       this._router.navigate(['/approve-request']);
     }
@@ -38,10 +45,41 @@ export class SeatAllocationComponent implements OnInit, OnDestroy {
       }
     } else {
       this.selectedSeats.push(selectedSeat);
+      console.log('Selected: ', this.selectedSeats.length);
+      console.log('Requested: ', this.selectedRequest.seatCount);
+      console.log('Condition: ', this.selectedSeats.length >= this.selectedRequest.seatCount);
+      if (this.selectedSeats.length + 1 > this.selectedRequest.seatCount) {
+        this._selectionExceededRequested = true;
+        this._messageService.add({
+          severity: 'error', summary: 'Error', detail: 'Selection of seats exceeded more than requested'
+          , closable: true
+        });
+      }
     }
     selectedSeat.currentlySelected = !selectedSeat.currentlySelected;
   }
 
+  onClose() {
+    this._messageService.clear();
+  }
+
+  onReject(content) {
+    this._modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
 }
 
 class Seat {
