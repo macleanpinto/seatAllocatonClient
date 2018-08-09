@@ -38,7 +38,6 @@ export class ApproveRequestComponent implements OnInit, OnDestroy {
   }
 
   onRowSelect(event) {
-    console.log(event.data);
     sessionStorage.setItem('selectedRequest', JSON.stringify(event.data));
     this._router.navigate(['/allocate-seats']);
   }

@@ -12,11 +12,12 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
+            { path: '', redirectTo: 'approve-request', pathMatch: 'prefix' },
             { path: 'approve-request', component: ApproveRequestComponent },
             { path: 'allocate-seats', component: SeatAllocationComponent },
             { path: 'import', component: SeatsImportComponent },
             { path: 'baySearch', component: BaySearchComponent },
+            { path: 'import-seats-layout', component: SeatsImportComponent },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },

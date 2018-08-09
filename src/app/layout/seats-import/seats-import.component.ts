@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-seats-import',
@@ -8,18 +10,31 @@ import { SeatAllocationService } from '../providers/services/seatAllocationServi
 })
 export class SeatsImportComponent implements OnInit {
 
+  @ViewChild('inputFile') fileInput: ElementRef;
+
   public selectedFileName = 'No file selected';
   public selectedfile: File;
   public seats: Array<Array<Seat>> = new Array<Array<Seat>>();
   public selectedSeats: Array<Seat> = new Array<Seat>();
   public saveSeats: Array<Seat> = new Array<Seat>();
-  public building = '';
-  public floorId = '';
-  public bayId = '';
+  public importSeatLayoutForm: FormGroup;
+  public bayList = ['Bay 1', 'Bay 2', 'Bay 3', 'Bay 4'];
+  public floorList = ['Floor 1', 'Floor 2', 'Floor 3'];
+  public buildingList = ['Building 1', 'Building 2', 'Building 3'];
+  public _selectionExceededRequested = true;
 
-  constructor(private _seatsService: SeatAllocationService) { }
+  constructor(private _seatsService: SeatAllocationService, private _fb: FormBuilder,private _messageService: MessageService) { }
 
   ngOnInit() {
+    this.importSeatLayoutForm = this._fb.group({
+      building: ['', Validators.required],
+      floor: ['', Validators.required],
+      bay: ['', Validators.required]
+    });
+  }
+
+  public onClick() {
+    console.log(this.importSeatLayoutForm);
   }
 
   fileChange(event) {
@@ -42,8 +57,7 @@ export class SeatsImportComponent implements OnInit {
           }
         }
         console.log(this.seats);
-        this._seatsService.saveTemplateService(this.saveSeats,
-          this.building, this.floorId, this.bayId).subscribe(result => console.log('Done'));
+
       };
     }
   }
@@ -52,44 +66,50 @@ export class SeatsImportComponent implements OnInit {
     const rowSeats: Seat[] = [];
     rowCellsList.forEach((eachCellValue, colId) => {
       const seatValues = eachCellValue.split('|');
-      const eachSeat: Seat = new Seat(seatValues[0], seatValues[1], seatValues[2], rowId, colId);
+      const building = this.importSeatLayoutForm.controls.building.value;
+      const floor = this.importSeatLayoutForm.controls.floor.value;
+      const bay = this.importSeatLayoutForm.controls.bay.value;
+      const eachSeat: Seat = new Seat(building, floor, bay,
+        seatValues[0], seatValues[1], seatValues[2], rowId, colId);
       rowSeats.push(eachSeat);
       this.saveSeats.push(eachSeat);
     });
     return rowSeats;
   }
 
-  // public selectDeselectAvailableSeats(selectedSeat: Seat) {
-  //   if (selectedSeat.currentlySelected) {
-  //     const index = this.selectedSeats.indexOf(selectedSeat);
-  //     if (index !== -1) {
-  //       this.selectedSeats.splice(index, 1);
-  //     }
-  //   } else {
-  //     this.selectedSeats.push(selectedSeat);
-  //   }
-  //   selectedSeat.currentlySelected = !selectedSeat.currentlySelected;
-  // }
+  uploadCsv() {
+    this._seatsService.saveTemplateService(this.saveSeats).subscribe(result => {
+      this._messageService.add({
+        severity: 'success', summary: 'Success', detail: 'Seats saved successfully', closable: true
+      });
+      this.seats = new Array<Array<Seat>>();
+      this.selectedFileName = 'No file selected';
+      this.fileInput.nativeElement.value = '';
+    });
+  }
 
-  // public populateSeats() {
-  //   this._templateSaveService.fetchTemplateService()
-  //   .subscribe(
-  //     (result) => {
-  //       this.seats = result[0].listOfSeatsList;
-  //       console.log('Done');
-
-  //     });
-  // }
+  cancelUpload() {
+    this.seats = new Array<Array<Seat>>();
+    this.selectedFileName = 'No file selected';
+    this.fileInput.nativeElement.value = '';
+  }
 
 }
 
 class Seat {
+  building: string;
+  floor: string;
+  bayId: string;
   seatNbr: string;
   occupancy: string;
   project: string;
   rowId: number;
   colId: number;
-  constructor(seatNbr: string, occupancy: string, project: string, rowId: number, colId: number) {
+  constructor(building: string, floor: string, bayId: string,
+    seatNbr: string, occupancy: string, project: string, rowId: number, colId: number) {
+    this.building = building;
+    this.floor = floor;
+    this.bayId = bayId;
     this.seatNbr = seatNbr;
     this.occupancy = occupancy;
     this.project = project;
