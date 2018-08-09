@@ -63,4 +63,16 @@
     </div>
 
   </div>
+  <div *ngIf="_selectionExceededRequested">
+    <p-toast position="bottom-right"  (onClose)="onClose()"  [modal]="true">
+      <div class="toaster">
+        <ng-template let-message pTemplate="message">
+          <div>
+            <h3>{{message.summary}}</h3>
+            <p>{{message.detail}}</p>
+          </div>
+        </ng-template>
+      </div>
+    </p-toast>
+  </div>
 </div>

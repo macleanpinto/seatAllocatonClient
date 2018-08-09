@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-seats-import',
@@ -20,9 +21,9 @@ export class SeatsImportComponent implements OnInit {
   public bayList = ['Bay 1', 'Bay 2', 'Bay 3', 'Bay 4'];
   public floorList = ['Floor 1', 'Floor 2', 'Floor 3'];
   public buildingList = ['Building 1', 'Building 2', 'Building 3'];
+  public _selectionExceededRequested = true;
 
-
-  constructor(private _seatsService: SeatAllocationService, private _fb: FormBuilder) { }
+  constructor(private _seatsService: SeatAllocationService, private _fb: FormBuilder,private _messageService: MessageService) { }
 
   ngOnInit() {
     this.importSeatLayoutForm = this._fb.group({
@@ -78,7 +79,12 @@ export class SeatsImportComponent implements OnInit {
 
   uploadCsv() {
     this._seatsService.saveTemplateService(this.saveSeats).subscribe(result => {
-      console.log('Done');
+      this._messageService.add({
+        severity: 'success', summary: 'Success', detail: 'Seats saved successfully', closable: true
+      });
+      this.seats = new Array<Array<Seat>>();
+      this.selectedFileName = 'No file selected';
+      this.fileInput.nativeElement.value = '';
     });
   }
 
