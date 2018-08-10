@@ -12,7 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ApproveRequestComponent } from './approve-request/approve-request.component';
 
 import { SeatAllocationComponent } from './seat-allocation/seat-allocation.component';
-
+import { CreateRequestComponent } from './create-request/create-request.component';
 import { PageHeaderModule, SharedPipesModule, StatModule } from '../shared';
 import { HttpModule } from '@angular/http';
 import { SeatsImportComponent } from './seats-import/seats-import.component';
@@ -43,7 +43,8 @@ import { BayLayoutComponent } from './bay-search/bay-layout/bay-layout.component
         DropdownModule
     ],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent,
-        ApproveRequestComponent, SeatsImportComponent, SeatAllocationComponent,BaySearchComponent, BayLayoutComponent],
+        ApproveRequestComponent, SeatsImportComponent, SeatAllocationComponent,
+        BaySearchComponent, BayLayoutComponent, CreateRequestComponent],
     providers: [MessageService, AppServiceModule]
 })
 export class LayoutModule { }

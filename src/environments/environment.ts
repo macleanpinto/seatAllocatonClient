@@ -9,5 +9,6 @@ export const environment = {
   fetchLayout: 'resources/fetchLayout.json',
   retrieveSeatUrl: 'http://localhost:9000/fetchSeatingTemplate',
   submitSeatAllocation: '',
-  saveSeatTemplateUrl: 'resources/fetchLayout.json'
+  saveSeatTemplateUrl: 'resources/fetchLayout.json',
+  saveSeatRequestTemplateUrl: 'resources/fetchRequest.json'
 };

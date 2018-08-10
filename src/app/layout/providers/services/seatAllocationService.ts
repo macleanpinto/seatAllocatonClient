@@ -13,6 +13,7 @@ export class SeatAllocationService {
     private _fetchLayout = environment.fetchLayout;
     private _saveSeatsTemplate = environment.saveSeatTemplateUrl;
     private _submitSeatAllocation = environment.submitSeatAllocation;
+    private _saveSeatRequestTemplate = environment.saveSeatRequestTemplateUrl;
 
     constructor(private _http: Http, private _httpClient: HttpClient) { }
 
@@ -48,7 +49,11 @@ export class SeatAllocationService {
     }
 
     public saveTemplateService(seats) {
-        return this._httpClient.post(this._saveSeatsTemplate, seats);
+        return this._httpClient.post(this._saveSeatRequestTemplate, seats);
+    }
+
+    public saveSeatRequestService(seatRequest) {
+        return this._httpClient.post(this._saveSeatsTemplate, seatRequest);
     }
 
     private handleError(error: Response) {
