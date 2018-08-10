@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LayoutRoutingModule } from './layout-routing.module';
@@ -38,6 +39,7 @@ import { BayLayoutComponent } from './bay-search/bay-layout/bay-layout.component
         HttpModule,
         FormsModule,
         ReactiveFormsModule,
+        NgbModule.forRoot(),
         DropdownModule
     ],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent,
