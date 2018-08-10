@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { SubmitSeatsDTO } from '../../interfaces/seat-allocation.interface';
 
 @Injectable()
 export class SeatAllocationService {
@@ -11,6 +12,7 @@ export class SeatAllocationService {
     private _fetchRequests = environment.fetchRequests;
     private _fetchLayout = environment.fetchLayout;
     private _saveSeatsTemplate = environment.saveSeatTemplateUrl;
+    private _submitSeatAllocation = environment.submitSeatAllocation;
 
     constructor(private _http: Http, private _httpClient: HttpClient) { }
 
@@ -29,6 +31,15 @@ export class SeatAllocationService {
         params.set('floorId', floorId);
         params.set('bayId', bayId);
         return this._http.get(this._fetchLayout, { search: params })
+            .pipe(
+                map((response: Response) => <any>response.json()),
+                tap(response => console.log('end progress bar here')),
+                catchError(this.handleError)
+            );
+    }
+
+    public submitSeats(submitSeatsDTO: SubmitSeatsDTO): Observable<any> {
+        return this._http.post(this._submitSeatAllocation, { search: submitSeatsDTO })
             .pipe(
                 map((response: Response) => <any>response.json()),
                 tap(response => console.log('end progress bar here')),
