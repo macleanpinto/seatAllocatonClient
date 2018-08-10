@@ -81,11 +81,14 @@ export class SeatAllocationComponent implements OnInit, OnDestroy {
     });
     this._submitSeatsDTO.seatIds = seatIds;
     this._submitSeatsDTO.requestId = this.selectedRequest.requestId;
-    this._seatAllocationService.submitSeats(this._submitSeatsDTO);
+    this._seatAllocationService.approveRequest(this._submitSeatsDTO);
   }
 
   onRejectCommentsSubmit() {
-    console.log(this._rejectComments);
+    this._submitSeatsDTO = <SubmitSeatsDTO>{};
+    this._submitSeatsDTO.requestId = this.selectedRequest.requestId;
+    this._submitSeatsDTO.comments = this._rejectComments;
+    this._seatAllocationService.rejectRequest(this._submitSeatsDTO);
     this.hideModal();
   }
 }

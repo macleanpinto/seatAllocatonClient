@@ -12,8 +12,9 @@ export class SeatAllocationService {
     private _fetchRequests = environment.fetchRequests;
     private _fetchLayout = environment.fetchLayout;
     private _saveSeatsTemplate = environment.saveSeatTemplateUrl;
-    private _submitSeatAllocation = environment.submitSeatAllocation;
+    private _approveRequest = environment.approveRequest;
     private _saveSeatRequestTemplate = environment.saveSeatRequestTemplateUrl;
+    private _rejectRequest = environment.rejectRequest;
 
     constructor(private _http: Http, private _httpClient: HttpClient) { }
 
@@ -39,8 +40,17 @@ export class SeatAllocationService {
             );
     }
 
-    public submitSeats(submitSeatsDTO: SubmitSeatsDTO): Observable<any> {
-        return this._http.post(this._submitSeatAllocation, { search: submitSeatsDTO })
+    public approveRequest(submitSeatsDTO: SubmitSeatsDTO): Observable<any> {
+        return this._http.post(this._approveRequest, { search: submitSeatsDTO })
+            .pipe(
+                map((response: Response) => <any>response.json()),
+                tap(response => console.log('end progress bar here')),
+                catchError(this.handleError)
+            );
+    }
+
+    public rejectRequest(submitSeatsDTO: SubmitSeatsDTO): Observable<any> {
+        return this._http.post(this._rejectRequest, { search: submitSeatsDTO })
             .pipe(
                 map((response: Response) => <any>response.json()),
                 tap(response => console.log('end progress bar here')),
