@@ -18,9 +18,9 @@ export class SeatsImportComponent implements OnInit {
   public selectedSeats: Array<Seat> = new Array<Seat>();
   public saveSeats: Array<Seat> = new Array<Seat>();
   public importSeatLayoutForm: FormGroup;
-  public bayList = ['Bay 1', 'Bay 2', 'Bay 3', 'Bay 4'];
-  public floorList = ['Floor 1', 'Floor 2', 'Floor 3'];
-  public buildingList = ['Building 1', 'Building 2', 'Building 3'];
+  public bayList = ['1', '2', '3', '4'];
+  public floorList = ['1', '2', '3'];
+  public buildingList = ['Bangalore-C1', 'Bangalore-C2'];
   public _selectionExceededRequested = true;
 
   constructor(private _seatsService: SeatAllocationService, private _fb: FormBuilder,private _messageService: MessageService) { }
