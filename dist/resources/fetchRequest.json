@@ -1,0 +1,46 @@
+{
+    "msg": "Results Found",
+    "statusCd": 200,
+    "results": [{
+            "requestId": 1,
+            "buildingId": "BNG C1",
+            "floorId": 45765341,
+            "bayId": "A",
+            "seatCount": 20,
+            "projectName": "Gordon Food Services",
+            "requestInitiator": "Upendra Singh",
+            "status": "In Review"
+        },
+        {
+            "requestId": 2,
+            "buildingId": "BNG C1",
+            "floorId": 45765341,
+            "bayId": "A",
+            "seatCount": 20,
+            "projectName": "Gordon Food Services",
+            "requestInitiator": "Upendra Singh",
+            "status": "In Review"
+        },
+        {
+            "requestId": 3,
+            "buildingId": "BNG C1",
+            "floorId": 45765341,
+            "bayId": "A",
+            "seatCount": 20,
+            "projectName": "Gordon Food Services",
+            "requestInitiator": "Upendra Singh",
+            "status": "In Review"
+        },
+        {
+            "requestId": 4,
+            "buildingId": "BNG C1",
+            "floorId": 45765341,
+            "bayId": "A",
+            "seatCount": 20,
+            "projectName": "Gordon Food Services",
+            "requestInitiator": "Upendra Singh",
+            "status": "In Review"
+        }
+
+    ]
+}
