@@ -15,8 +15,35 @@ export class SeatAllocationService {
     private _approveRequest = environment.approveRequest;
     private _saveSeatRequestTemplate = environment.saveSeatRequestTemplateUrl;
     private _rejectRequest = environment.rejectRequest;
+    private _fetchBuildings = environment.fetchBuildings;
+    private _fetchFloorsByBuilding = environment.fetchFloorsByBuilding;
 
     constructor(private _http: Http, private _httpClient: HttpClient) { }
+
+    public fetchBuildings(): Observable<any> {
+        return this._http.get(this._fetchBuildings)
+            .pipe(map((response: Response) => <any>response.json()),
+                tap(response => console.log('FetchBuildings Response received')),
+                catchError(this.handleError));
+    }
+
+    public fetchFloorsByBuilding(building: string): Observable<any> {
+        const params = new URLSearchParams();
+        params.set('building', building);
+        return this._http.get(this._fetchFloorsByBuilding, { search: params })
+            .pipe(map((response: Response) => <any>response.json()),
+                tap(response => console.log('FetchFloorsByBuilding Response received')),
+                catchError(this.handleError));
+    }
+
+    public fetchBaysByFloor(floor: string): Observable<any> {
+        const params = new URLSearchParams();
+        params.set('building', floor);
+        return this._http.get(this._fetchFloorsByBuilding, { search: params })
+            .pipe(map((response: Response) => <any>response.json()),
+                tap(response => console.log('FetchBaysByFloor Response received')),
+                catchError(this.handleError));
+    }
 
     public fetchRequests(): Observable<any> {
         return this._http.get(this._fetchRequests)

@@ -11,5 +11,8 @@ export const environment = {
   approveRequest: '',
   saveSeatTemplateUrl: 'resources/fetchLayout.json',
   saveSeatRequestTemplateUrl: 'resources/fetchRequest.json',
-  rejectRequest: ''
+  rejectRequest: '',
+  fetchBuildings: 'resources/buildings.json',
+  fetchFloorsByBuilding: 'resources/floorsByBuilding.json',
+  fetchBaysByFloor: 'resources/baysByFloor.json'
 };
