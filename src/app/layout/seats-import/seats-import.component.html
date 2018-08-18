@@ -4,7 +4,7 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">Building</label>
       </div>
-      <select class="custom-select" id="inputGroupSelect01" formControlName="building">
+      <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedBuilding" formControlName="building" (change)="onBuildingChange()">
         <option *ngFor="let building of buildingList"  [ngValue]="building">{{building}}</option>
       </select>
     </div>
@@ -13,7 +13,7 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">Floor Id&nbsp;</label>
       </div>
-      <select class="custom-select" id="inputGroupSelect01" formControlName="floor">
+      <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedFloor" (change)="onFloorChange()" formControlName="floor">
         <option *ngFor="let floor of floorList"  [ngValue]="floor">{{floor}}</option>
       </select>
     </div>
@@ -22,7 +22,7 @@
       <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">Bay &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
       </div>
-      <select class="custom-select" id="inputGroupSelect01" formControlName="bay">
+      <select class="custom-select" id="inputGroupSelect01" formControlName="bay" [(ngModel)]="selectedBay">
         <option *ngFor="let bay of bayList"  [ngValue]="bay">{{bay}}</option>
       </select>
     </div>

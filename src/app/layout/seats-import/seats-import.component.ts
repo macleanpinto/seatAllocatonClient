@@ -18,12 +18,15 @@ export class SeatsImportComponent implements OnInit {
   public selectedSeats: Array<Seat> = new Array<Seat>();
   public saveSeats: Array<Seat> = new Array<Seat>();
   public importSeatLayoutForm: FormGroup;
-  public bayList = ['Bay 1', 'Bay 2', 'Bay 3', 'Bay 4'];
-  public floorList = ['Floor 1', 'Floor 2', 'Floor 3'];
-  public buildingList = ['Building 1', 'Building 2', 'Building 3'];
+  public bayList = [];
+  public floorList = [];
+  public buildingList = [];
   public _selectionExceededRequested = true;
+  public selectedBuilding: string;
+  public selectedFloor: string;
+  public selectedBay: string;
 
-  constructor(private _seatsService: SeatAllocationService, private _fb: FormBuilder,private _messageService: MessageService) { }
+  constructor(private _seatsService: SeatAllocationService, private _fb: FormBuilder, private _messageService: MessageService) { }
 
   ngOnInit() {
     this.importSeatLayoutForm = this._fb.group({
@@ -31,13 +34,29 @@ export class SeatsImportComponent implements OnInit {
       floor: ['', Validators.required],
       bay: ['', Validators.required]
     });
+    this._seatsService.fetchBuildings().subscribe(response => {
+      this.buildingList = response.results;
+    });
   }
 
   public onClick() {
     console.log(this.importSeatLayoutForm);
   }
 
+  public onBuildingChange() {
+    this._seatsService.fetchFloorsByBuilding(this.selectedBuilding).subscribe(response => {
+      this.floorList = response.results;
+    });
+  }
+
+  public onFloorChange() {
+    this._seatsService.fetchBaysByFloor(this.selectedFloor).subscribe(response => {
+      this.bayList = response.results;
+    });
+  }
+
   fileChange(event) {
+    console.log('Building', this.selectedBuilding);
     const fileList: FileList = event.target.files;
     if (fileList.length > 0) {
       this.selectedFileName = fileList[0].name;
