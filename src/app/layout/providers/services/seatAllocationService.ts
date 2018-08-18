@@ -29,8 +29,8 @@ export class SeatAllocationService {
 
     public fetchLayout(buildingId: string, floorId: string, bayId: string): Observable<any> {
         const params = new URLSearchParams();
-        params.set('buildingId', buildingId);
-        params.set('floorId', floorId);
+        params.set('building', buildingId);
+        params.set('floor', floorId);
         params.set('bayId', bayId);
         return this._http.get(this._fetchLayout, { search: params })
             .pipe(

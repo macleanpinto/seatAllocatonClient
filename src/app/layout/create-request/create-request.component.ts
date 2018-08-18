@@ -12,12 +12,12 @@ export class CreateRequestComponent implements OnInit {
 
   public createRequestForm: FormGroup;
   public _selectionExceededRequested: Boolean = true;
-  private _buildingId: String;
-  private _floorId: Number;
-  private _bayId: String;
-  private _seatCount: Number;
-  private _projectName: String;
-  private _requestInitiator: String;
+  public _buildingId: String;
+  public _floorId: Number;
+  public _bayId: String;
+  public _seatCount: Number;
+  public _projectName: String;
+  public _requestInitiator: String;
   public bayList = ['Bay 1', 'Bay 2', 'Bay 3', 'Bay 4'];
   public floorList = ['Floor 1', 'Floor 2', 'Floor 3'];
   public buildingList = ['Building 1', 'Building 2', 'Building 3'];
