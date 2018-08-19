@@ -2,11 +2,13 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { routerTransition } from '../../router.animations';
 
 @Component({
   selector: 'app-seats-import',
   templateUrl: './seats-import.component.html',
-  styleUrls: ['./seats-import.component.scss']
+  styleUrls: ['./seats-import.component.scss'],
+  animations: [routerTransition()]
 })
 export class SeatsImportComponent implements OnInit {
 

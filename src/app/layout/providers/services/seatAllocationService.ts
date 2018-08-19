@@ -17,6 +17,7 @@ export class SeatAllocationService {
     private _rejectRequest = environment.rejectRequest;
     private _fetchBuildings = environment.fetchBuildings;
     private _fetchFloorsByBuilding = environment.fetchFloorsByBuilding;
+    private _fetchBaysByFloor = environment.fetchBaysByFloor;
 
     constructor(private _http: Http, private _httpClient: HttpClient) { }
 
@@ -38,8 +39,8 @@ export class SeatAllocationService {
 
     public fetchBaysByFloor(floor: string): Observable<any> {
         const params = new URLSearchParams();
-        params.set('building', floor);
-        return this._http.get(this._fetchFloorsByBuilding, { search: params })
+        params.set('floor', floor);
+        return this._http.get(this._fetchBaysByFloor, { search: params })
             .pipe(map((response: Response) => <any>response.json()),
                 tap(response => console.log('FetchBaysByFloor Response received')),
                 catchError(this.handleError));
