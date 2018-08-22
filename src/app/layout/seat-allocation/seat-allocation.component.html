@@ -19,7 +19,7 @@
     <div *ngIf="selectedSeats && selectedSeats.length > 0" class="alert alert-info" role="alert">
         {{selectedSeats.length}} seats selected
     </div>
-    <div *ngIf="_selectionExceededRequested">
+    <div *ngIf="_requestFlag">
         <p-toast position="bottom-right" (onClose)="onClose()" [modal]="true">
             <div class="toaster">
                 <ng-template let-message pTemplate="message">

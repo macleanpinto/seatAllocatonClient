@@ -72,7 +72,6 @@ export class SeatAllocationService {
         return this._http.post(this._approveRequest, { search: submitSeatsDTO })
             .pipe(
                 map((response: Response) => <any>response.json()),
-                tap(response => console.log('end progress bar here')),
                 catchError(this.handleError)
             );
     }
@@ -81,7 +80,6 @@ export class SeatAllocationService {
         return this._http.post(this._rejectRequest, { search: submitSeatsDTO })
             .pipe(
                 map((response: Response) => <any>response.json()),
-                tap(response => console.log('end progress bar here')),
                 catchError(this.handleError)
             );
     }
