@@ -58,7 +58,7 @@ export class CreateRequestComponent implements OnInit {
       this.createRequestForm.controls['projectName'].value,
       this.createRequestForm.controls['requestInitiator'].value,
       'CREATED');
-    this._seatAllocationService.saveTemplateService(seatRequest).subscribe(result => {
+    this._seatAllocationService.saveSeatRequestService(seatRequest).subscribe(result => {
       this._selectionExceededRequested = true;
       this._messageService.add({
         severity: 'success', summary: 'Success', detail: 'Request created successfully', closable: true

@@ -49,11 +49,11 @@ export class SeatAllocationService {
     }
 
     public saveTemplateService(seats) {
-        return this._httpClient.post(this._saveSeatRequestTemplate, seats);
+        return this._httpClient.post(this._saveSeatsTemplate, seats);
     }
 
     public saveSeatRequestService(seatRequest) {
-        return this._httpClient.post(this._saveSeatsTemplate, seatRequest);
+        return this._httpClient.post(this._saveSeatRequestTemplate, seatRequest);
     }
 
     private handleError(error: Response) {
