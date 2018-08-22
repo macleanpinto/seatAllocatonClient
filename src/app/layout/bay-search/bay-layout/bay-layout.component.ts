@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./bay-layout.component.scss']
 })
 export class BayLayoutComponent implements OnInit {
-  @Input() private seats : Array<Array<Seat>>;
+  @Input() public seats: Array<Array<Seat>>;
   ngOnInit() {
   }
 }

@@ -8,7 +8,7 @@ import { Validators, FormBuilder, FormGroup, FormControl, Form } from '@angular/
   templateUrl: './bay-search.component.html',
   styleUrls: ['./bay-search.component.scss']
 })
-export class BaySearchComponent implements OnInit {
+export class BaySearchComponent implements OnInit, OnDestroy {
   public seats: Array<Array<Seat>> = new Array<Array<Seat>>();
   public buildingId: String;
   public floorId: String;
@@ -41,7 +41,7 @@ export class BaySearchComponent implements OnInit {
       }));
   }
 
-  private clearForm() {
+  public clearForm() {
     this.baySearchForm.controls['building'].setValue('');
     this.baySearchForm.controls['floor'].setValue('');
     this.baySearchForm.controls['bay'].setValue('');

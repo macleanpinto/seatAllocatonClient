@@ -12,15 +12,15 @@ export class CreateRequestComponent implements OnInit {
 
   public createRequestForm: FormGroup;
   public _selectionExceededRequested: Boolean = true;
-  private _buildingId: String;
-  private _floorId: Number;
-  private _bayId: String;
-  private _seatCount: Number;
-  private _projectName: String;
-  private _requestInitiator: String;
-  public bayList = ['1', '2', '3', '4'];
-  public floorList = ['1', '2', '3'];
-  public buildingList = ['Bangalore-C1', 'Bangalore-C2'];
+  public _buildingId: String;
+  public _floorId: Number;
+  public _bayId: String;
+  public _seatCount: Number;
+  public _projectName: String;
+  public _requestInitiator: String;
+  public bayList = ['Bay 1', 'Bay 2', 'Bay 3', 'Bay 4'];
+  public floorList = ['Floor 1', 'Floor 2', 'Floor 3'];
+  public buildingList = ['Building 1', 'Building 2', 'Building 3'];
   constructor(private _fb: FormBuilder, private _seatAllocationService: SeatAllocationService,
     private _messageService: MessageService) {
 

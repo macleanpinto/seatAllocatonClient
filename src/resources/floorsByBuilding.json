@@ -1,0 +1,9 @@
+{
+    "msg": "Results Not Found",
+    "statusCd": 404,
+    "results": [
+        "Floor 1",
+        "Floor 2"
+    ],
+    "totalRecords": 2
+}

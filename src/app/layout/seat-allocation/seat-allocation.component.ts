@@ -16,12 +16,12 @@ export class SeatAllocationComponent implements OnInit, OnDestroy {
   @ViewChild('rejectSeatAllocation') private _rejectModal: ElementRef;
   public seats: Array<Array<Seat>> = new Array<Array<Seat>>();
   public selectedSeats: Array<Seat> = new Array<Seat>();
-  private _subscription: Subscription[] = [];
+  public _subscription: Subscription[] = [];
   public selectedRequest: any;
-  private _selectionExceededRequested = false;
-  private closeResult: string;
-  private _submitSeatsDTO: SubmitSeatsDTO;
-  private _rejectComments: string;
+  public _selectionExceededRequested = false;
+  public closeResult: string;
+  public _submitSeatsDTO: SubmitSeatsDTO;
+  public _rejectComments: string;
 
   constructor(private _seatAllocationService: SeatAllocationService, private _router: Router, private _messageService: MessageService,
     private _modalService: NgbModal, private _renderer: Renderer) { }
@@ -81,11 +81,14 @@ export class SeatAllocationComponent implements OnInit, OnDestroy {
     });
     this._submitSeatsDTO.seatIds = seatIds;
     this._submitSeatsDTO.requestId = this.selectedRequest.requestId;
-    this._seatAllocationService.submitSeats(this._submitSeatsDTO);
+    this._seatAllocationService.approveRequest(this._submitSeatsDTO);
   }
 
   onRejectCommentsSubmit() {
-    console.log(this._rejectComments);
+    this._submitSeatsDTO = <SubmitSeatsDTO>{};
+    this._submitSeatsDTO.requestId = this.selectedRequest.requestId;
+    this._submitSeatsDTO.comments = this._rejectComments;
+    this._seatAllocationService.rejectRequest(this._submitSeatsDTO);
     this.hideModal();
   }
 }

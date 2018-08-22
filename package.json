@@ -5,7 +5,7 @@
     "scripts": {
         "ng": "ng",
         "start": "node server.js",
-        "build": "ng build --prod",
+        "build": "ng build --aot --prod",
         "gitbuild": "ng build --prod --base-href /start-angular/SB-Admin-BS4-Angular-6/master/dist/",
         "test": "ng test",
         "test-ci": "TEST_CI=true ng test",
@@ -15,11 +15,11 @@
     },
     "private": true,
     "dependencies": {
-        "@angular/cli": "6.0.0",
-        "@angular/compiler-cli": "^6.0.0",
         "@angular/animations": "^6.0.0",
+        "@angular/cli": "6.0.0",
         "@angular/common": "^6.0.0",
         "@angular/compiler": "^6.0.0",
+        "@angular/compiler-cli": "^6.0.0",
         "@angular/core": "^6.0.0",
         "@angular/forms": "^6.0.0",
         "@angular/http": "^6.0.0",
@@ -32,14 +32,15 @@
         "chart.js": "^2.7.2",
         "core-js": "^2.5.5",
         "express": "^4.16.3",
+        "express-http-proxy": "^1.2.0",
         "font-awesome": "^4.7.0",
         "ng2-charts": "^1.6.0",
         "primeicons": "^1.0.0-beta.10",
         "primeng": "^6.1.0-rc.1",
         "rxjs": "^6.1.0",
+        "typescript": "~2.7.0",
         "yarn": "^1.6.0",
-        "zone.js": "^0.8.26",
-        "typescript": "~2.7.0"
+        "zone.js": "^0.8.26"
     },
     "devDependencies": {
         "@angular/language-service": "^6.0.0",

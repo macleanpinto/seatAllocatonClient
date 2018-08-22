@@ -1,7 +1,8 @@
-const express = require('express');
-const app = express();
-const path = require('path');
-app.use(express.static(__dirname + '/dist'));
+var express = require('express');
+var app = express();
+var path = require('path');
+var proxy = require('express-http-proxy');
+app.use(express.static(__dirname + '/dist'), ('/api/*', proxy('https://seat-allocation-service.herokuapp.com/')));
 app.listen(process.env.PORT || 4000);
 
 app.get('/*', function (req, res) {
