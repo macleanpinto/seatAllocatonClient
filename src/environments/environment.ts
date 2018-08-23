@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  fetchRequests: 'resources/fetchRequest.json',
+  fetchRequests: 'api/requestsRetrieval/fetchAllRequests?page=1&size=100',
   fetchLayout: 'resources/fetchLayout.json',
   retrieveSeatUrl: 'http://localhost:9000/fetchSeatingTemplate',
   approveRequest: '',

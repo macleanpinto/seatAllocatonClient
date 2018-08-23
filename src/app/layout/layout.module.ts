@@ -21,6 +21,7 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { DropdownModule } from 'primeng/dropdown';
+import { PaginatorModule } from 'primeng/paginator';
 
 import { AppServiceModule } from './providers/app-services-module';
 import { BaySearchComponent } from './bay-search/bay-search.component';
@@ -40,7 +41,8 @@ import { BayLayoutComponent } from './bay-search/bay-layout/bay-layout.component
         FormsModule,
         ReactiveFormsModule,
         NgbModule.forRoot(),
-        DropdownModule
+        DropdownModule,
+        PaginatorModule
     ],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent,
         ApproveRequestComponent, SeatsImportComponent, SeatAllocationComponent,

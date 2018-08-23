@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  fetchRequests: 'resources/fetchRequest.json',
+  fetchRequests: 'api/requestsRetrieval/fetchAllRequests?page=1&size=10',
   fetchLayout: 'api/seatRetrieval/fetchLayout',
   retrieveSeatUrl: 'http://localhost:9000/fetchSeatingTemplate',
   approveRequest: '',
