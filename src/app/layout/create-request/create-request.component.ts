@@ -28,9 +28,9 @@ export class CreateRequestComponent implements OnInit {
 
   ngOnInit() {
     this.createRequestForm = this._fb.group({
-      buildingId: ['', Validators.required],
-       floorId: ['', Validators.required],
-       bayId: ['', Validators.required],
+      building: ['', Validators.required],
+       floor: ['', Validators.required],
+       bay: ['', Validators.required],
        seatCount: ['', Validators.required],
        projectName: ['', Validators.required],
        requestInitiator: ['', Validators.required],
@@ -41,9 +41,9 @@ export class CreateRequestComponent implements OnInit {
     //this._subscription.forEach(sub => sub.unsubscribe());
   }
   clearForm() {
-    this.createRequestForm.controls['buildingId'].setValue('');
-    this.createRequestForm.controls['floorId'].setValue('');
-    this.createRequestForm.controls['bayId'].setValue('');
+    this.createRequestForm.controls['building'].setValue('');
+    this.createRequestForm.controls['floor'].setValue('');
+    this.createRequestForm.controls['bay'].setValue('');
     this.createRequestForm.controls['seatCount'].setValue('');
     this.createRequestForm.controls['projectName'].setValue('');
     this.createRequestForm.controls['requestInitiator'].setValue('');
@@ -51,14 +51,15 @@ export class CreateRequestComponent implements OnInit {
  // constructor(buildingId: string, floorId: number, bayId: string,
  //   seatCount: number, projectName: string, requestInitiator: string, status: string)
   onSubmit(createRequestForm: FormGroup) {
-    const seatRequest = new SeatRequestDTO(this.createRequestForm.controls['buildingId'].value,
-      this.createRequestForm.controls['floorId'].value,
-      this.createRequestForm.controls['bayId'].value,
+    const seatRequest = new SeatRequestDTO(this.createRequestForm.controls['building'].value,
+      this.createRequestForm.controls['floor'].value,
+      this.createRequestForm.controls['bay'].value,
       this.createRequestForm.controls['seatCount'].value,
       this.createRequestForm.controls['projectName'].value,
       this.createRequestForm.controls['requestInitiator'].value,
       'CREATED');
-    this._seatAllocationService.saveTemplateService(seatRequest).subscribe(result => {
+    this._seatAllocationService.saveSeatRequestService(seatRequest).subscribe(result => {
+      this._selectionExceededRequested = true;
       this._messageService.add({
         severity: 'success', summary: 'Success', detail: 'Request created successfully', closable: true
       });

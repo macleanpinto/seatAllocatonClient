@@ -1,36 +1,30 @@
 <div class="container-fluid">
 <form [formGroup]="createRequestForm">
-  <div class="row">
-
-      <div class="col col-sm-2">
-        <label>{{'buildingId' | translate}}</label>
-      </div>
-      <div class="col col-sm-3">
-        <input type="text" formControlName="buildingId" name="buildingId" class="form-control" [(ngModel)]="_buildingId" id="buildingId"
-          placeholder="{{'buildingId' | translate}}">
-      </div>
- 
-  </div>
-  <div class="row">
-
-      <div class="col col-sm-2">
-        <label>{{'floorId' | translate}}</label>
-      </div>
-      <div class="col col-sm-3">
-        <input type="text" formControlName="floorId" name="floorId" class="form-control" [(ngModel)]="_floorId" id="floorId" placeholder="{{'floorId' | translate}}">
-      </div>
-
-  </div>
-  <div class="row">
- 
-      <div class="col col-sm-2">
-        <label>{{'bayId' | translate}}</label>
-      </div>
-      <div class="col col-sm-3">
-        <input type="text" formControlName="bayId" name="bayId" class="form-control" [(ngModel)]="_bayId" id="bayId" placeholder="{{'bayId' | translate}}">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Building</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" formControlName="building">
+          <option *ngFor="let building of buildingList"  [ngValue]="building">{{building}}</option>
+        </select>
       </div>
  
-  </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Floor Id&nbsp;</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" formControlName="floor">
+          <option *ngFor="let floor of floorList"  [ngValue]="floor">{{floor}}</option>
+        </select>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Bay &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" formControlName="bay">
+          <option *ngFor="let bay of bayList"  [ngValue]="bay">{{bay}}</option>
+        </select>
+      </div>
   <div class="row">
    
       <div class="col col-sm-2">
@@ -69,4 +63,17 @@
       <button type="button" class="btn btn-primary" (click)="onSubmit(createRequestForm);">Submit</button>
   </div>
 </form>
+
+<div *ngIf="_selectionExceededRequested">
+    <p-toast position="bottom-right"  (onClose)="onClose()"  [modal]="true">
+      <div class="toaster">
+        <ng-template let-message pTemplate="message">
+          <div>
+            <h3>{{message.summary}}</h3>
+            <p>{{message.detail}}</p>
+          </div>
+        </ng-template>
+      </div>
+    </p-toast>
+  </div>
 </div>

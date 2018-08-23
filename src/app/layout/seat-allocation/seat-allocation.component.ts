@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { SubmitSeatsDTO } from '../interfaces/seat-allocation.interface';
+import { StatusCodes } from '../../app.constants';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class SeatAllocationComponent implements OnInit, OnDestroy {
   public selectedSeats: Array<Seat> = new Array<Seat>();
   public _subscription: Subscription[] = [];
   public selectedRequest: any;
-  public _selectionExceededRequested = false;
+  public _requestFlag = false;
   public closeResult: string;
   public _submitSeatsDTO: SubmitSeatsDTO;
   public _rejectComments: string;
@@ -49,7 +50,7 @@ export class SeatAllocationComponent implements OnInit, OnDestroy {
     } else {
       this.selectedSeats.push(selectedSeat);
       if (this.selectedSeats.length + 1 > this.selectedRequest.seatCount) {
-        this._selectionExceededRequested = true;
+        this._requestFlag = true;
         this._messageService.add({
           severity: 'error', summary: 'Error', detail: 'Selection of seats exceeded more than requested'
           , closable: true
@@ -81,14 +82,43 @@ export class SeatAllocationComponent implements OnInit, OnDestroy {
     });
     this._submitSeatsDTO.seatIds = seatIds;
     this._submitSeatsDTO.requestId = this.selectedRequest.requestId;
-    this._seatAllocationService.approveRequest(this._submitSeatsDTO);
+    this._submitSeatsDTO.comments = '';
+    this._seatAllocationService.approveRequest(this._submitSeatsDTO).subscribe(response => {
+      if (response.statusCd = StatusCodes.RESULTS_FOUND) {
+        this._requestFlag = true;
+        this._messageService.add({
+          severity: 'success', summary: 'Success', detail: 'Request has been approved successfully'
+          , closable: true
+        });
+      } else {
+        this._requestFlag = true;
+        this._messageService.add({
+          severity: 'error', summary: 'Error', detail: 'Error while approving the request'
+          , closable: true
+        });
+      }
+    });
   }
 
   onRejectCommentsSubmit() {
     this._submitSeatsDTO = <SubmitSeatsDTO>{};
     this._submitSeatsDTO.requestId = this.selectedRequest.requestId;
     this._submitSeatsDTO.comments = this._rejectComments;
-    this._seatAllocationService.rejectRequest(this._submitSeatsDTO);
+    this._seatAllocationService.rejectRequest(this._submitSeatsDTO).subscribe(response => {
+      if (response.statusCd = StatusCodes.RESULTS_FOUND) {
+        this._requestFlag = true;
+        this._messageService.add({
+          severity: 'success', summary: 'Success', detail: 'Request has been Rejected successfully'
+          , closable: true
+        });
+      } else {
+        this._requestFlag = true;
+        this._messageService.add({
+          severity: 'error', summary: 'Error', detail: 'Error while rejecting the request'
+          , closable: true
+        });
+      }
+    });
     this.hideModal();
   }
 }

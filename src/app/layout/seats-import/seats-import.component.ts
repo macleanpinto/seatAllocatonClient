@@ -2,11 +2,13 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { routerTransition } from '../../router.animations';
 
 @Component({
   selector: 'app-seats-import',
   templateUrl: './seats-import.component.html',
-  styleUrls: ['./seats-import.component.scss']
+  styleUrls: ['./seats-import.component.scss'],
+  animations: [routerTransition()]
 })
 export class SeatsImportComponent implements OnInit {
 
@@ -18,9 +20,9 @@ export class SeatsImportComponent implements OnInit {
   public selectedSeats: Array<Seat> = new Array<Seat>();
   public saveSeats: Array<Seat> = new Array<Seat>();
   public importSeatLayoutForm: FormGroup;
-  public bayList = [];
-  public floorList = [];
-  public buildingList = [];
+  public bayList = ['1', '2', '3', '4'];
+  public floorList = ['1', '2', '3'];
+  public buildingList = ['Bangalore-C1', 'Bangalore-C2'];
   public _selectionExceededRequested = true;
   public selectedBuilding: string;
   public selectedFloor: string;

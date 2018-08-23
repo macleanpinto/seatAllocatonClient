@@ -17,6 +17,7 @@ export class SeatAllocationService {
     private _rejectRequest = environment.rejectRequest;
     private _fetchBuildings = environment.fetchBuildings;
     private _fetchFloorsByBuilding = environment.fetchFloorsByBuilding;
+    private _fetchBaysByFloor = environment.fetchBaysByFloor;
 
     constructor(private _http: Http, private _httpClient: HttpClient) { }
 
@@ -38,8 +39,8 @@ export class SeatAllocationService {
 
     public fetchBaysByFloor(floor: string): Observable<any> {
         const params = new URLSearchParams();
-        params.set('building', floor);
-        return this._http.get(this._fetchFloorsByBuilding, { search: params })
+        params.set('floor', floor);
+        return this._http.get(this._fetchBaysByFloor, { search: params })
             .pipe(map((response: Response) => <any>response.json()),
                 tap(response => console.log('FetchBaysByFloor Response received')),
                 catchError(this.handleError));
@@ -68,29 +69,27 @@ export class SeatAllocationService {
     }
 
     public approveRequest(submitSeatsDTO: SubmitSeatsDTO): Observable<any> {
-        return this._http.post(this._approveRequest, { search: submitSeatsDTO })
+        return this._http.post(this._approveRequest, { submitSeatsDTO })
             .pipe(
                 map((response: Response) => <any>response.json()),
-                tap(response => console.log('end progress bar here')),
                 catchError(this.handleError)
             );
     }
 
     public rejectRequest(submitSeatsDTO: SubmitSeatsDTO): Observable<any> {
-        return this._http.post(this._rejectRequest, { search: submitSeatsDTO })
+        return this._http.post(this._rejectRequest, { submitSeatsDTO })
             .pipe(
                 map((response: Response) => <any>response.json()),
-                tap(response => console.log('end progress bar here')),
                 catchError(this.handleError)
             );
     }
 
     public saveTemplateService(seats) {
-        return this._httpClient.post(this._saveSeatRequestTemplate, seats);
+        return this._httpClient.post(this._saveSeatsTemplate, seats);
     }
 
     public saveSeatRequestService(seatRequest) {
-        return this._httpClient.post(this._saveSeatsTemplate, seatRequest);
+        return this._httpClient.post(this._saveSeatRequestTemplate, seatRequest);
     }
 
     private handleError(error: Response) {
