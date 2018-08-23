@@ -69,7 +69,7 @@ export class SeatAllocationService {
     }
 
     public approveRequest(submitSeatsDTO: SubmitSeatsDTO): Observable<any> {
-        return this._http.post(this._approveRequest, { search: submitSeatsDTO })
+        return this._http.post(this._approveRequest, { submitSeatsDTO })
             .pipe(
                 map((response: Response) => <any>response.json()),
                 catchError(this.handleError)
@@ -77,7 +77,7 @@ export class SeatAllocationService {
     }
 
     public rejectRequest(submitSeatsDTO: SubmitSeatsDTO): Observable<any> {
-        return this._http.post(this._rejectRequest, { search: submitSeatsDTO })
+        return this._http.post(this._rejectRequest, { submitSeatsDTO })
             .pipe(
                 map((response: Response) => <any>response.json()),
                 catchError(this.handleError)
