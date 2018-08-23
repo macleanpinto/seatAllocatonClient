@@ -10,7 +10,7 @@ export const environment = {
   retrieveSeatUrl: 'http://localhost:9000/fetchSeatingTemplate',
   approveRequest: '',
   saveSeatTemplateUrl: 'resources/fetchLayout.json',
-  saveSeatRequestTemplateUrl: 'resources/fetchRequest.json',
+  saveRequestUrl: 'resources/fetchRequest.json',
   rejectRequest: '',
   fetchBuildings: 'resources/buildings.json',
   fetchFloorsByBuilding: 'resources/floorsByBuilding.json',
