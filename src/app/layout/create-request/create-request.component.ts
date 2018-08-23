@@ -18,9 +18,13 @@ export class CreateRequestComponent implements OnInit {
   public _seatCount: Number;
   public _projectName: String;
   public _requestInitiator: String;
-  public bayList = ['Bay 1', 'Bay 2', 'Bay 3', 'Bay 4'];
-  public floorList = ['Floor 1', 'Floor 2', 'Floor 3'];
-  public buildingList = ['Building 1', 'Building 2', 'Building 3'];
+  public bayList = [];
+  public floorList = [];
+  public buildingList = [];
+  public selectedBuilding: string;
+  public selectedFloor: string;
+  public selectedBay: string;
+
   constructor(private _fb: FormBuilder, private _seatAllocationService: SeatAllocationService,
     private _messageService: MessageService) {
 
@@ -29,11 +33,26 @@ export class CreateRequestComponent implements OnInit {
   ngOnInit() {
     this.createRequestForm = this._fb.group({
       building: ['', Validators.required],
-       floor: ['', Validators.required],
-       bay: ['', Validators.required],
-       seatCount: ['', Validators.required],
-       projectName: ['', Validators.required],
-       requestInitiator: ['', Validators.required],
+      floor: ['', Validators.required],
+      bay: ['', Validators.required],
+      seatCount: ['', Validators.required],
+      projectName: ['', Validators.required],
+      requestInitiator: ['', Validators.required],
+    });
+    this._seatAllocationService.fetchBuildings().subscribe(response => {
+      this.buildingList = response.results;
+    });
+  }
+
+  public onBuildingChange() {
+    this._seatAllocationService.fetchFloorsByBuilding(this.selectedBuilding).subscribe(response => {
+      this.floorList = response.results;
+    });
+  }
+
+  public onFloorChange() {
+    this._seatAllocationService.fetchBaysByFloor(this.selectedFloor).subscribe(response => {
+      this.bayList = response.results;
     });
   }
 

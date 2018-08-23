@@ -1,30 +1,34 @@
 <div class="container-fluid">
 <form [formGroup]="createRequestForm">
     <div class="input-group mb-3">
+      <div class="input-group mt-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01">Building</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01" formControlName="building">
+        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedBuilding" formControlName="building" (change)="onBuildingChange()">
           <option *ngFor="let building of buildingList"  [ngValue]="building">{{building}}</option>
         </select>
       </div>
- 
-      <div class="input-group mb-3">
+      <span class="text-danger show" *ngIf="createRequestForm.controls.building.errors">Please select the value of Building</span>
+      <div class="input-group mt-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01">Floor Id&nbsp;</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01" formControlName="floor">
+        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedFloor" (change)="onFloorChange()" formControlName="floor">
           <option *ngFor="let floor of floorList"  [ngValue]="floor">{{floor}}</option>
         </select>
       </div>
-      <div class="input-group mb-3">
+      <span class="text-danger show" *ngIf="createRequestForm.controls.floor.errors">Please select the value of Floor</span>
+      <div class="input-group mt-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01">Bay &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01" formControlName="bay">
+        <select class="custom-select" id="inputGroupSelect01" formControlName="bay" [(ngModel)]="selectedBay">
           <option *ngFor="let bay of bayList"  [ngValue]="bay">{{bay}}</option>
         </select>
       </div>
+      <span class="text-danger show" *ngIf="createRequestForm.controls.bay.errors">Please select the value of Bay</span>
+  </div>
   <div class="row">
    
       <div class="col col-sm-2">
