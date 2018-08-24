@@ -8,6 +8,6 @@ export const environment = {
   saveSeatRequestTemplateUrl: 'resources/fetchRequest.json',
   rejectRequest: '',
   fetchBuildings: '/api/building/fetchAllBuildings',
-  fetchFloorsByBuilding: '/api/floor/fetchFloorByBuilding',
+  fetchFloorsByBuilding: '/api/floor/fetchFloorsByBuilding',
   fetchBaysByFloor: '/api/bay/fetchBaysByFloor'
 };
