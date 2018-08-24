@@ -5,12 +5,12 @@
 
 export const environment = {
   production: false,
-  fetchRequests: 'resources/fetchRequest.json',
-  fetchLayout: 'resources/fetchLayout.json',
+  fetchRequests: 'api/requestsRetrieval/fetchAllRequests?page=1&size=100',
+  fetchLayout: 'api/seatRetrieval/fetchLayout',
   retrieveSeatUrl: 'http://localhost:9000/fetchSeatingTemplate',
   approveRequest: '',
   saveSeatTemplateUrl: 'resources/fetchLayout.json',
-  saveSeatRequestTemplateUrl: 'resources/fetchRequest.json',
+  saveRequestUrl: 'resources/fetchRequest.json',
   rejectRequest: '',
   fetchBuildings: 'resources/buildings.json',
   fetchFloorsByBuilding: 'resources/floorsByBuilding.json',
