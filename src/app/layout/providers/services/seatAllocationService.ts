@@ -46,8 +46,11 @@ export class SeatAllocationService {
                 catchError(this.handleError));
     }
 
-    public fetchRequests(): Observable<any> {
-        return this._http.get(this._fetchRequests)
+    public fetchRequests(page: string, size: string): Observable<any> {
+        const params = new URLSearchParams();
+        params.set('page', page);
+        params.set('size', size);
+        return this._http.get(this._fetchRequests, { search: params })
             .pipe(
                 map((response: Response) => <any>response.json()),
                 tap(response => console.log('end progress bar here')),

@@ -1,6 +1,6 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
     <div class="list-group">
-        <a routerLink="/import-seats-layout" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a *ngIf="role==='ADMIN'" routerLink="/import-seats-layout" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Import Seats' | translate }}</span>
         </a>
@@ -8,9 +8,13 @@
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Create Requests' | translate }}</span>
         </a>
-        <a routerLink="/approve-request" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a *ngIf="role==='ADMIN'" routerLink="/approve-request" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Approve Requests' | translate }}</span>
+        </a>
+        <a [routerLink]="['/baySearch']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-cubes"></i>&nbsp;
+            <span>{{ 'BaySearchComponent' | translate }}</span>
         </a>
         <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
@@ -39,10 +43,6 @@
         <a [routerLink]="['/components']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-th-list"></i>&nbsp;
             <span>{{ 'Component' | translate }}</span>
-        </a>
-        <a [routerLink]="['/baySearch']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-cubes"></i>&nbsp;
-            <span>{{ 'BaySearchComponent' | translate }}</span>
         </a>
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('pages')">

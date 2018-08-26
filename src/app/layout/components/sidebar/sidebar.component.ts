@@ -7,14 +7,15 @@ import { TranslateService } from '@ngx-translate/core';
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+    role = 'ADMIN';
     isActive: boolean = false;
     collapsed: boolean = false;
     showMenu: string = '';
     pushRightClass: string = 'push-right';
 
     @Output() collapsedEvent = new EventEmitter<boolean>();
-    
+
     constructor(private translate: TranslateService, public router: Router) {
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
@@ -70,5 +71,8 @@ export class SidebarComponent {
 
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
+    }
+    ngOnInit() {
+        this.role = localStorage.getItem('role')
     }
 }

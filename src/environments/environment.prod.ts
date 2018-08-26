@@ -1,8 +1,7 @@
 export const environment = {
   production: true,
-  fetchRequests: 'api/requestsRetrieval/fetchAllRequests?page=1&size=10',
+  fetchRequests: 'api/requestsRetrieval/fetchAllRequests',
   fetchLayout: 'api/seatRetrieval/fetchLayout',
-  retrieveSeatUrl: 'http://localhost:9000/fetchSeatingTemplate',
   approveRequest: '/api/requestProcess/approve',
   saveSeatTemplateUrl: 'resources/fetchLayout.json',
   saveSeatRequestTemplateUrl: 'resources/fetchRequest.json',

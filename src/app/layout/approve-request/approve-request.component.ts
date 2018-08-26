@@ -17,11 +17,11 @@ export class ApproveRequestComponent implements OnInit, OnDestroy {
   private _subscription: Subscription[] = [];
 
   constructor(private _seatAllocationService: SeatAllocationService, private _router: Router) { }
-  private _page: number;
-  private _size: number;
+  private _page = 1;
+  private _size = 10;
 
   ngOnInit() {
-    this._subscription.push(this._seatAllocationService.fetchRequests().subscribe(res => {
+    this._subscription.push(this._seatAllocationService.fetchRequests(this._page + '', this._size + '').subscribe(res => {
       this.requests = res.results;
     }));
     this.cols = [
@@ -44,11 +44,9 @@ export class ApproveRequestComponent implements OnInit, OnDestroy {
     this._router.navigate(['/allocate-seats']);
   }
   paginate(event) {
-    //event.first = Index of the first record
-    //event.rows = Number of rows to display in new page
+    this._page = event.first; //Index of the first record
+    this._size = event.rows; // Number of rows to display in new page
     //event.page = Index of the new page
     //event.pageCount = Total number of pages
-
-    console.log(event);
   }
 }
