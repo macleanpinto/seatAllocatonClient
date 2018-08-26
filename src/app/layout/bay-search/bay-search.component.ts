@@ -37,7 +37,7 @@ export class BaySearchComponent implements OnInit, OnDestroy {
     this._subscription.push(this._seatAllocationService.
       fetchLayout(form.value.building, form.value.floor, form.value.bay).subscribe(res => {
         this.showLayout = true;
-        this.seats = res.results['seats'];
+        this.seats = res.results;
       }));
   }
 

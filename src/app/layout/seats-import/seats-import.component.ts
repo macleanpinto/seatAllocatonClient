@@ -20,9 +20,9 @@ export class SeatsImportComponent implements OnInit {
   public selectedSeats: Array<Seat> = new Array<Seat>();
   public saveSeats: Array<Seat> = new Array<Seat>();
   public importSeatLayoutForm: FormGroup;
-  public bayList = ['1', '2', '3', '4'];
-  public floorList = ['1', '2', '3'];
-  public buildingList = ['Bangalore-C1', 'Bangalore-C2'];
+  public bayList = [];
+  public floorList = [];
+  public buildingList = [];
   public _selectionExceededRequested = true;
   public selectedBuilding: string;
   public selectedFloor: string;

@@ -9,7 +9,7 @@ export const environment = {
   fetchLayout: 'resources/fetchLayout.json',
   approveRequest: '',
   saveSeatTemplateUrl: 'resources/fetchLayout.json',
-  saveSeatRequestTemplateUrl: 'resources/fetchRequest.json',
+  saveRequestUrl: 'resources/fetchRequest.json',
   rejectRequest: '',
   fetchBuildings: 'resources/buildings.json',
   fetchFloorsByBuilding: 'resources/floorsByBuilding.json',

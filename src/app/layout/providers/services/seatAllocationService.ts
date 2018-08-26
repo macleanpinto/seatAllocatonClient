@@ -13,7 +13,7 @@ export class SeatAllocationService {
     private _fetchLayout = environment.fetchLayout;
     private _saveSeatsTemplate = environment.saveSeatTemplateUrl;
     private _approveRequest = environment.approveRequest;
-    private _saveSeatRequestTemplate = environment.saveSeatRequestTemplateUrl;
+    private _saveSeatRequestTemplate = environment.saveRequestUrl;
     private _rejectRequest = environment.rejectRequest;
     private _fetchBuildings = environment.fetchBuildings;
     private _fetchFloorsByBuilding = environment.fetchFloorsByBuilding;
@@ -72,7 +72,7 @@ export class SeatAllocationService {
     }
 
     public approveRequest(submitSeatsDTO: SubmitSeatsDTO): Observable<any> {
-        return this._http.post(this._approveRequest, { submitSeatsDTO })
+        return this._http.post(this._approveRequest, submitSeatsDTO )
             .pipe(
                 map((response: Response) => <any>response.json()),
                 catchError(this.handleError)
@@ -80,7 +80,7 @@ export class SeatAllocationService {
     }
 
     public rejectRequest(submitSeatsDTO: SubmitSeatsDTO): Observable<any> {
-        return this._http.post(this._rejectRequest, { submitSeatsDTO })
+        return this._http.post(this._rejectRequest, submitSeatsDTO )
             .pipe(
                 map((response: Response) => <any>response.json()),
                 catchError(this.handleError)
