@@ -17,7 +17,7 @@ export class ApproveRequestComponent implements OnInit, OnDestroy {
   private _subscription: Subscription[] = [];
 
   constructor(private _seatAllocationService: SeatAllocationService, private _router: Router) { }
-  private _page = 1;
+  private _page = 0;
   private _size = 10;
 
   ngOnInit() {
