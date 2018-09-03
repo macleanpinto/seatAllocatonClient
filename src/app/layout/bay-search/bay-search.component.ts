@@ -1,33 +1,54 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
 import { Subscription } from '../../../../node_modules/rxjs';
+import { routerTransition } from '../../router.animations';
 import { Validators, FormBuilder, FormGroup, FormControl, Form } from '@angular/forms';
 
 @Component({
   selector: 'app-bay-search',
   templateUrl: './bay-search.component.html',
-  styleUrls: ['./bay-search.component.scss']
+  styleUrls: ['./bay-search.component.scss'],
+  animations: [routerTransition()]
 })
 export class BaySearchComponent implements OnInit, OnDestroy {
   public seats: Array<Array<Seat>> = new Array<Array<Seat>>();
-  public buildingId: String;
-  public floorId: String;
-  public bayId: String;
+  public bayList = [];
+  public floorList = [];
+  public buildingList = [];
   public selectedSeats: Array<Seat> = new Array<Seat>();
   private _subscription: Subscription[] = [];
   public selectedRequest: any;
   public baySearchForm: FormGroup;
   public showLayout: Boolean = false;
+  public selectedBuilding: string;
+  public selectedFloor: string;
+  public selectedBay: string;
 
   constructor(private _seatAllocationService: SeatAllocationService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.baySearchForm = this.formBuilder.group({
-      building: new FormControl('', Validators.required),
-      floor: new FormControl('', Validators.required),
-      bay: new FormControl('', Validators.required)
+      building: ['', Validators.required],
+      floor: ['', Validators.required],
+      bay: ['', Validators.required]
+    });
+    this._seatAllocationService.fetchBuildings().subscribe(response => {
+      this.buildingList = response.results;
     });
   }
+
+  public onBuildingChange() {
+    this._seatAllocationService.fetchFloorsByBuilding(this.selectedBuilding).subscribe(response => {
+      this.floorList = response.results;
+    });
+  }
+
+  public onFloorChange() {
+    this._seatAllocationService.fetchBaysByFloor(this.selectedFloor).subscribe(response => {
+      this.bayList = response.results;
+    });
+  }
+
   ngOnDestroy() {
     this._subscription.forEach(sub => sub.unsubscribe());
   }
