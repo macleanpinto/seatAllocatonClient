@@ -68,7 +68,7 @@ export class SeatsImportComponent implements OnInit {
       reader.readAsText(this.selectedfile, 'UTF-8');
       reader.onload = (fileLoadEvent) => {
         const excelContentAsString = reader.result;
-        const allRows = excelContentAsString.split('\n');
+        const allRows = (<String>excelContentAsString).split('\n');
 
         for (let i = 0; i < allRows.length; i++) {
           if (allRows[i] || allRows[i].trim() !== '') {

@@ -5,13 +5,15 @@
 
 export const environment = {
   production: false,
-  fetchRequests: 'api/requestsRetrieval/fetchAllRequests',
+  fetchRequests: 'resources/fetchRequest.json',
   fetchLayout: 'resources/fetchLayout.json',
   approveRequest: '',
   saveSeatTemplateUrl: 'resources/fetchLayout.json',
   saveRequestUrl: 'resources/fetchRequest.json',
   rejectRequest: '',
+  fetchProjects: 'resources/projects.json',
   fetchBuildings: 'resources/buildings.json',
+  fetchBuildingsByProject: 'resources/buildings.json',
   fetchFloorsByBuilding: 'resources/floorsByBuilding.json',
   fetchBaysByFloor: 'resources/baysByFloor.json'
 };

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { SeatAllocationService } from '../providers/services/seatAllocationService';
+import { SeatDeallocationService } from '../providers/services/seatDeallocationService';
 import { Router } from '@angular/router';
 import { Subscription } from '../../../../node_modules/rxjs';
 
@@ -16,7 +17,7 @@ export class ApproveRequestComponent implements OnInit, OnDestroy {
   cols: any[];
   private _subscription: Subscription[] = [];
 
-  constructor(private _seatAllocationService: SeatAllocationService, private _router: Router) { }
+  constructor(private _seatAllocationService: SeatAllocationService, private _seatDeallocationService: SeatDeallocationService, private _router: Router) { }
   private _page = 0;
   private _size = 10;
 
@@ -32,7 +33,22 @@ export class ApproveRequestComponent implements OnInit, OnDestroy {
       { field: 'seatCount', header: 'No of Seats Requested' },
       { field: 'projectName', header: 'Project Name' },
       { field: 'requestInitiator', header: 'Request Initiator' },
-      { field: 'status', header: 'Status' }
+      { field: 'status', header: 'Status' },
+      { field: 'type', header: 'Type' }
+    ];
+    this._subscription.push(this._seatDeallocationService.fetchRequests(this._page + '', this._size + '').subscribe(res => {
+      this.requests = res.results;
+    }));
+    this.cols = [
+      { field: 'requestId', header: 'Request Id' },
+      { field: 'buildingId', header: 'Building Id' },
+      { field: 'floorId', header: 'Floor Id' },
+      { field: 'bayId', header: 'Bay Id' },
+      { field: 'seatCount', header: 'No of Seats Requested' },
+      { field: 'projectName', header: 'Project Name' },
+      { field: 'requestInitiator', header: 'Request Initiator' },
+      { field: 'status', header: 'Status' },
+      { field: 'type', header: 'Type' }
     ];
   }
   ngOnDestroy() {

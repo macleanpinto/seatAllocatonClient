@@ -6,6 +6,8 @@ export const environment = {
   saveSeatTemplateUrl: 'api/import/saveSeatingTemplate',
   saveRequestUrl: 'api/saveRequest/saveRequestTemplate',
   rejectRequest: '/api/requestProcess/reject',
+  fetchProjects: '/api/building/fetchAllProjects',
+  fetchBuildingsByProject: '/api/floor/fetchBuildingsbyProject',
   fetchBuildings: '/api/building/fetchAllBuildings',
   fetchFloorsByBuilding: '/api/floor/fetchFloorsByBuilding',
   fetchBaysByFloor: '/api/bay/fetchBaysByFloor'

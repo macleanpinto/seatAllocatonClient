@@ -8,6 +8,10 @@
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Create Requests' | translate }}</span>
         </a>
+        <a routerLink="/deallocate-seats" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+            <span>{{ 'Deallocation Requests' | translate }}</span>
+        </a>
         <a *ngIf="role==='ADMIN'" routerLink="/approve-request" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Approve Requests' | translate }}</span>

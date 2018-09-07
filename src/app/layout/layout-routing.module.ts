@@ -4,7 +4,7 @@ import { LayoutComponent } from './layout.component';
 import { ApproveRequestComponent } from './approve-request/approve-request.component';
 import { SeatAllocationComponent } from './seat-allocation/seat-allocation.component';
 import { CreateRequestComponent } from './create-request/create-request.component';
-
+import { SeatDeallocationComponent } from './seat-deallocation/seat-deallocation.component';
 import { SeatsImportComponent } from './seats-import/seats-import.component';
 import { BaySearchComponent } from './bay-search/bay-search.component';
 const routes: Routes = [
@@ -15,6 +15,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'approve-request', pathMatch: 'prefix' },
             { path: 'approve-request', component: ApproveRequestComponent },
             { path: 'allocate-seats', component: SeatAllocationComponent },
+            { path: 'deallocate-seats', component: SeatDeallocationComponent },
             { path: 'createRequest', component: CreateRequestComponent },
             { path: 'import', component: SeatsImportComponent },
             { path: 'baySearch', component: BaySearchComponent },

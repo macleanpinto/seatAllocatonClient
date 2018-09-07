@@ -9,7 +9,19 @@
             "seatCount": 2,
             "projectName": "Gordon Food Services",
             "requestInitiator": "Upendra Singh",
-            "status": "In Review"
+            "status": "CREATED",
+            "type": "Allocation"
+        },
+        {
+            "requestId":"5b699300ee19e897a0b5eb22",
+            "buildingId": "bangalore-c1",
+            "floorId": 5,
+            "bayId": "1",
+            "seatCount": 2,
+            "projectName": "Gordon Food Services",
+            "requestInitiator": "Upendra Singh",
+            "status": "CREATED",
+            "type": "Deallocation"
         }
 
     ]

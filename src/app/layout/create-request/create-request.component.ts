@@ -76,7 +76,7 @@ export class CreateRequestComponent implements OnInit {
       this.createRequestForm.controls['seatCount'].value,
       this.createRequestForm.controls['projectName'].value,
       this.createRequestForm.controls['requestInitiator'].value,
-      'CREATED');
+      'CREATED','ALLOCATION');
     this._seatAllocationService.saveSeatRequestService(seatRequest).subscribe(result => {
       this._selectionExceededRequested = true;
       this._messageService.add({
@@ -103,8 +103,10 @@ class SeatRequestDTO {
 
   status: string;
 
+  type: string;
+
   constructor(buildingId: string, floorId: number, bayId: string,
-    seatCount: number, projectName: string, requestInitiator: string, status: string) {
+    seatCount: number, projectName: string, requestInitiator: string, status: string, type: string) {
     this.buildingId = buildingId;
     this.floorId = floorId;
     this.bayId = bayId;
@@ -112,5 +114,6 @@ class SeatRequestDTO {
     this.projectName = projectName;
     this.requestInitiator = requestInitiator;
     this.status = status;
+    this.type = type;
   }
 }

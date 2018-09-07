@@ -148,6 +148,7 @@ class AllocationRequest {
   projectName: boolean;
   requestInitiator: string;
   status: string;
+  type: string;
 
   constructor(requestId: string,
     buildingId: string,
@@ -156,7 +157,8 @@ class AllocationRequest {
     seatCount: number,
     projectName: boolean,
     requestInitiator: string,
-    status: string) {
+    status: string,
+    type: string) {
     this.requestId = requestId;
     this.buildingId = buildingId;
     this.floorId = floorId;
@@ -165,6 +167,7 @@ class AllocationRequest {
     this.projectName = projectName;
     this.requestInitiator = requestInitiator;
     this.status = status;
+    this.type = type;
   }
 }
 
